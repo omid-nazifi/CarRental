@@ -3,6 +3,8 @@ import os
 # flask lib
 from flaskext.enterprise import Enterprise
 from flask import Flask, render_template
+# internal classes
+from converter import Converter
 
 # config Flask
 app = Flask(__name__)
@@ -10,28 +12,37 @@ app = Flask(__name__)
 # config Flask Enterprise
 enterprise = Enterprise(app)
 String = enterprise._sp.String
-Integer = enterprise._sp.Integer
-Boolean = enterprise._sp.Boolean
-Array = enterprise._scls.Array
+Double = enterprise._sp.Double
 
 
 class Service(enterprise.SOAPService):
     """ Soap Service Class """
-    __soap_target_namespace__ = 'MyNS'
+    __soap_target_namespace__ = 'CurrencyConverter'
     __soap_server_address__ = '/soap'
 
-    @enterprise.soap(Integer, Integer, _returns=Integer)
-    def sum(self, x, y):
-        """ Function to sum two integer
-
+    @enterprise.soap(Double, String, _returns=Double)
+    def convert(self, dollar, currency):
+        """ Function to convert dollar to given currency
         Args:
-            x : int
-            y : int
+            dollar : double
+            currency : string
 
         Returns:
-            return an int
+            return a double
         """
-        return x + y
+
+        converter = Converter()
+        converted_price = converter.convert(dollar, currency)
+        return converted_price
+
+    @enterprise.soap(_returns=String)
+    def echo(self):
+        """ Function to echo something. It is just for test soap service by clients
+
+        Returns:
+            return a text
+        """
+        return "Welcome to converter server"
 
 
 if __name__ == '__main__':
