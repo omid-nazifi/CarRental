@@ -1,0 +1,29 @@
+<div class="grid-container">
+  <mat-grid-list cols="2" rowHeight="550px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card fxFlexAlign="stretch" class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <img mat-card-image [src]="card.url" alt="Card image cap">
+          <div>PS: {{card.ps}}</div>
+          <div>Seats: {{card.seats}}</div>
+          <div>Production Year: {{card.productionYear}}</div>
+          <div>Avg. Comsumption: {{card.consumptionAVG}}</div>
+          <div>0 to 100km/h: {{card.zeroToHundred}}</div>
+          <div>Manual transmission: {{card.isManualTransmission}}</div>
+          <div>Plate number: {{card.plateNumber}}</div>
+          <div>Insurance number: {{card.insuranceNumber}}</div>
+          <div>Price in EUR: {{card.priceEUR}} € </div> 
+          <div> Price in DOL: {{card.priceDOL}} $</div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" class="rent-button" [routerLink]="['../rent-car']">Rent this car</button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
