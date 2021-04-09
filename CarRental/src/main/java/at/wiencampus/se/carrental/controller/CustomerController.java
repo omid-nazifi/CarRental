@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -20,7 +21,9 @@ public class CustomerController extends IController {
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<Customer>> getAllCustomers() {
-        List<Customer> customerList = customerService.getCustomers();
+//        List<Customer> customerList = customerService.getCustomers();
+        Customer customer = new Customer(123L, 123L, 123, "Max", "Muster", "Addres Wien", "max.muster@test.at", "06881234567");
+        List<Customer> customerList = Collections.singletonList(customer);
         return new ResponseEntity<>(customerList, HttpStatus.OK);
     }
 
