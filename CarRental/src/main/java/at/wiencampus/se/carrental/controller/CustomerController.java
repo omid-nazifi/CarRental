@@ -19,6 +19,18 @@ public class CustomerController extends IController {
     @Autowired
     CustomerService customerService;
 
+    @GetMapping("/login")
+    public ResponseEntity<Customer> customerLogin(String email, String password){
+
+        return new ResponseEntity<>(customerService.loginUser(email,password), HttpStatus.OK);
+    }
+
+    @PutMapping("/register")
+    public ResponseEntity<Customer> customerRegister(Customer newCustomer){
+
+        return new ResponseEntity<>(customerService.addCustomer(newCustomer), HttpStatus.OK);
+    }
+
     @GetMapping(value = "/all")
     public ResponseEntity<List<Customer>> getAllCustomers() {
 //        List<Customer> customerList = customerService.getCustomers();
