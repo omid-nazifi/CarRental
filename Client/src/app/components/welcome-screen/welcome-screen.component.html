@@ -1,0 +1,39 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Welcome Screen</h1>
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card  class="dashboard-card" style="text-align: center;">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content" style="text-align: center;">
+          <form class="example-form">
+            <table class="example-full-width" cellspacing="0">
+              <tr>
+                <td>
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Username" [(ngModel)]="username" name="username" required>
+                  </mat-form-field>
+                </td>
+              </tr>
+              <tr>
+                <td><mat-form-field class="example-full-width">
+                  <input matInput placeholder="Password" [(ngModel)]="password"type="password" name="password" required>
+                </mat-form-field>
+              </td>
+              </tr>
+            </table>
+          </form>
+          <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button routerLink="/bank-accounts" (click)="login()" color="primary">Login
+            
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

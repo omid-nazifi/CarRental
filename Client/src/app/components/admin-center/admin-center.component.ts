@@ -1,32 +1,29 @@
-import { Component } from '@angular/core';
-
-export interface RentNDriveUser {
-  id: number;
-  firstName: string;
-  secondName: string;
-  address: string;
-  phone: string;
-  email: string;
-}
-
-const ELEMENT_DATA: RentNDriveUser[] = [
-  {id: 1, firstName: 'Antonio', secondName: 'Lastro', address: 'FH Campus', phone: '0676 1234 567', email: 'fh@campus.at'},
-  {id: 2, firstName: 'Omid', secondName: 'Nazifi', address: 'FH Campus', phone: '0676 1234 567', email: 'fh@campus.at'},
-  {id: 3, firstName: 'Navid', secondName: 'Nazifi', address: 'FH Campus', phone: '0676 1234 567', email: 'fh@campus.at'},
-  {id: 4, firstName: 'Fahmi', secondName: 'El-Ghamrawi', address: 'FH Campus', phone: '0676 1234 567', email: 'fh@campus.at'},
-  {id: 5, firstName: 'Lukas', secondName: 'Cislo', address: 'FH Campus', phone: '0676 1234 567', email: 'fh@campus.at'},
-];
-
+import { Component, OnInit } from '@angular/core';
+import { from } from 'rxjs';
+import { CustomersService } from 'src/app/services/customers.service';
+import { Customer } from '../../models/Customer';
 @Component({
   selector: 'app-admin-center',
   templateUrl: './admin-center.component.html',
-  styleUrls: ['./admin-center.component.css']
+  styleUrls: ['./admin-center.component.scss']
 })
-export class AdminCenterComponent  {
+export class AdminCenterComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'firstName', 'secondName', 'address', 'phone', 'email'];
-  dataSource = ELEMENT_DATA;
+  customers: Customer[];
+  customersService: CustomersService;
 
+  constructor(customersService: CustomersService) {
+    this.customersService=customersService;
+  }
+
+  ngOnInit(): void {
+    this.customersService.getCustomers().subscribe(res => {
+      console.log(res);
+      this.customers=res;
+    },err => {
+      console.log(err);
+    })
+  }
   
 
 }
