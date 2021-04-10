@@ -5,7 +5,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="dollar" type="xs:double"/>
-                <xs:element name="currency" type="xs:string"/>
+                <xs:element name="currency" type="tns:currencyEnum"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -17,5 +17,43 @@
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+
+    <xs:simpleType name="currencyEnum">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EUR"/>
+            <xs:enumeration value="USD"/>
+            <xs:enumeration value="GBP"/>
+            <xs:enumeration value="JPY"/>
+            <xs:enumeration value="BGN"/>
+            <xs:enumeration value="CZK"/>
+            <xs:enumeration value="DKK"/>
+            <xs:enumeration value="HUF"/>
+            <xs:enumeration value="PLN"/>
+            <xs:enumeration value="RON"/>
+            <xs:enumeration value="SEK"/>
+            <xs:enumeration value="CHF"/>
+            <xs:enumeration value="ISK"/>
+            <xs:enumeration value="NOK"/>
+            <xs:enumeration value="HRK"/>
+            <xs:enumeration value="RUB"/>
+            <xs:enumeration value="TRY"/>
+            <xs:enumeration value="AUD"/>
+            <xs:enumeration value="BRL"/>
+            <xs:enumeration value="CAD"/>
+            <xs:enumeration value="CNY"/>
+            <xs:enumeration value="HKD"/>
+            <xs:enumeration value="IDR"/>
+            <xs:enumeration value="ILS"/>
+            <xs:enumeration value="INR"/>
+            <xs:enumeration value="KRW"/>
+            <xs:enumeration value="MXN"/>
+            <xs:enumeration value="MYR"/>
+            <xs:enumeration value="NZD"/>
+            <xs:enumeration value="PHP"/>
+            <xs:enumeration value="SGD"/>
+            <xs:enumeration value="THB"/>
+            <xs:enumeration value="ZAR"/>
+        </xs:restriction>
+    </xs:simpleType>
 
 </xs:schema>
