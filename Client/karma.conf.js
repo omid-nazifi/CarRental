@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/CarRental'),
+      dir: require('path').join(__dirname, './coverage/openbanking-app'),
       subdir: '.',
       reporters: [
         { type: 'html' },

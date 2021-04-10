@@ -1,6 +1,6 @@
-# CarRental
+# OpenbankingApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.6.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
 
 ## Development server
 
@@ -25,9 +25,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-
-
-
 
 
 # CarRental
@@ -60,8 +57,18 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 13. type in without "" "ng generate component login"
 
-14. For the Login-Screen I used following Link: "https://www.youtube.com/watch?v=BHU505buik4"
+14. type in without "" "ng generate component register"
 
-15. To have the same size for all cars in car-offer I found following link "https://stackoverflow.com/questions/52206588/align-mat-cards-content-image-text-and-buttons/52207832"
+15. On "app" right-click "New Folder", name it "models" without ""
 
+16. On "app" right-click "New Folder", name it "services" without ""
 
+17. On "services" right-click "Open in integrated terminal"
+
+18. type without "" in the new terminal window "ng generate service customers"
+
+19. type without "" in the new terminal window "ng generate service vehicles"
+
+20. On "models" right-click "New File", name it "Customer.ts"
+
+21. On "models" right-click "New File", name it "Vehicle.ts"

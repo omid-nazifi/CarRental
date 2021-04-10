@@ -7,15 +7,15 @@ import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
-import { NavigationSiteComponent } from './navigation-site.component';
+import { SiteNavigationComponent } from './site-navigation.component';
 
-describe('NavigationSiteComponent', () => {
-  let component: NavigationSiteComponent;
-  let fixture: ComponentFixture<NavigationSiteComponent>;
+describe('SiteNavigationComponent', () => {
+  let component: SiteNavigationComponent;
+  let fixture: ComponentFixture<SiteNavigationComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [NavigationSiteComponent],
+      declarations: [SiteNavigationComponent],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -29,7 +29,7 @@ describe('NavigationSiteComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NavigationSiteComponent);
+    fixture = TestBed.createComponent(SiteNavigationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
