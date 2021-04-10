@@ -15,13 +15,20 @@
     <description>Car Rental Webservice</description>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
+        <maven-jaxb2-plugin.url>http://localhost:8080/ws</maven-jaxb2-plugin.url>
+        <maven-jaxb2-plugin.schema>${maven-jaxb2-plugin.url}/currency.wsdl</maven-jaxb2-plugin.schema>
+        <maven-jaxb2-plugin.generatePackage>at.wiencampus.se.carrental.gen</maven-jaxb2-plugin.generatePackage>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            <version>RELEASE</version>
+            <scope>compile</scope>
         </dependency>
         <!-- tag::dependency[] -->
         <dependency>
@@ -41,6 +48,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -51,12 +64,6 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-            <version>RELEASE</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
@@ -84,30 +91,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <!-- tag::wsdl[] -->
-<!--            <plugin>-->
-<!--                <groupId>org.codehaus.mojo</groupId>-->
-<!--                <artifactId>jaxb2-maven-plugin</artifactId>-->
-<!--                <version>2.5.0</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <id>xjc</id>-->
-<!--                        <goals>-->
-<!--                            <goal>xjc</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--                <configuration>-->
-<!--                    <sources>-->
-<!--                        <source>${project.basedir}/src/main/resources/currency.xsd1</source>-->
-<!--                    </sources>-->
-<!--&lt;!&ndash;                    <schemaDirectory>${project.basedir}/src/main/resources/</schemaDirectory>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <outputDirectory>${project.basedir}/src/main/java</outputDirectory>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <clearOutputDir>false</clearOutputDir>&ndash;&gt;-->
-<!--                </configuration>-->
-<!--            </plugin>-->
-            <!-- end::xsd[] -->
-
             <plugin>
                 <groupId>org.jvnet.jaxb2.maven2</groupId>
                 <artifactId>maven-jaxb2-plugin</artifactId>
@@ -122,19 +105,12 @@
                 <configuration>
                     <schemaLanguage>WSDL</schemaLanguage>
                     <generateDirectory>${project.build.sourceDirectory}/</generateDirectory>
-                    <generatePackage>at.wiencampus.se.carrental.gen</generatePackage>
+                    <generatePackage>${maven-jaxb2-plugin.generatePackage}</generatePackage>
                     <schemas>
                         <schema>
-                            <url>http://127.0.0.1:5000/soap/convert?wsdl</url>
+                            <url>${maven-jaxb2-plugin.schema}</url>
                         </schema>
                     </schemas>
-<!--                    <generateDirectory>${project.basedir}/src/main/java</generateDirectory>-->
-<!--                    <generatePackage>com.baeldung.springsoap.client.gen</generatePackage>-->
-<!--                    <schemaDirectory>${project.basedir}/src/main/resources</schemaDirectory>-->
-<!--                    <noFileHeader>true</noFileHeader>-->
-<!--                    <schemaIncludes>-->
-<!--                        <include>countries.wsdl</include>-->
-<!--                    </schemaIncludes>-->
                 </configuration>
             </plugin>
             <!-- end::wsdl[] -->
