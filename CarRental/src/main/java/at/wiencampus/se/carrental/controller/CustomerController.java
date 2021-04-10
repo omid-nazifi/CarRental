@@ -33,9 +33,7 @@ public class CustomerController extends IController {
 
     @GetMapping(value = "/all")
     public ResponseEntity<List<Customer>> getAllCustomers() {
-//        List<Customer> customerList = customerService.getCustomers();
-        Customer customer = new Customer(123L, 123L, 123, "Max", "Muster", "Addres Wien", "max.muster@test.at", "06881234567");
-        List<Customer> customerList = Collections.singletonList(customer);
+        List<Customer> customerList = customerService.getCustomers();
         return new ResponseEntity<>(customerList, HttpStatus.OK);
     }
 

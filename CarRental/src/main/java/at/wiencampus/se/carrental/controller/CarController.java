@@ -23,7 +23,7 @@ public class CarController extends IController {
     @Autowired
     VehicleService vehicleService;
 
-    @GetMapping("/allVehicles")
+    @GetMapping("/all")
     public ResponseEntity<List<Vehicle>> getAllVehicles(){
         return new ResponseEntity<>(vehicleService.getAllVehicles(), HttpStatus.OK);
     }
@@ -38,10 +38,4 @@ public class CarController extends IController {
         return new ResponseEntity<>(customerRental, HttpStatus.OK);
     }
 
-    @GetMapping(value = "/all")
-    public ResponseEntity<List<Vehicle>> getAllCustomers() {
-        Vehicle vehicle = new Vehicle(123L, 123, "VehicleName", "g213s", "Type1", 4, new Date(), true, 12345, 1234, 1234, 5000000, "");
-        List<Vehicle> vehicleList = Collections.singletonList(vehicle);
-        return new ResponseEntity<>(vehicleList, HttpStatus.OK);
-    }
 }
