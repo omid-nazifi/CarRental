@@ -10,7 +10,7 @@ public class CurrencyService extends WebServiceGatewaySupport {
 
     private static final Logger logger = LoggerFactory.getLogger(CurrencyService.class);
 
-    public ConvertResponse getCurrency(double dollar, String currency) {
+    public ConvertResponse getCurrency(double dollar, CurrencyEnum currency) {
         ConvertRequest request = new ConvertRequest();
         request.setDollar(dollar);
         request.setCurrency(currency);
