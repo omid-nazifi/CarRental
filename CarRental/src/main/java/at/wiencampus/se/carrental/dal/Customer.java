@@ -43,6 +43,18 @@ public class Customer {
         this.number = number;
     }
 
+    public Customer(Long customerId, Long personalId, int countryId, String firstName, String lastName, String address, String email, String number, String password) {
+        this.customerId = customerId;
+        this.personalId = personalId;
+        this.countryId = countryId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.email = email;
+        this.number = number;
+        this.password = password;
+    }
+
     public Long getCustomerId() {
         return customerId;
     }
