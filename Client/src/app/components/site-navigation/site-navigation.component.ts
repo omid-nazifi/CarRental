@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { Customer } from '../../models/Customer';
+import { Vehicle } from '../../models/Vehicle';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { Customer } from '../../models/Customer';
 export class SiteNavigationComponent {
 
   @Input() customer: Customer;
+  @Input() vehicle: Vehicle;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches),

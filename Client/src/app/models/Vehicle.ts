@@ -12,6 +12,7 @@ export class Vehicle {
       public insuranceNumber: number,
       public horsePower: number,
       public cost: number,
-      public conditionDescription: string
+      public conditionDescription: string,
+      public url: string
     ){}
 }
