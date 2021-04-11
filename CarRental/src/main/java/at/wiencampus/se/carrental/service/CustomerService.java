@@ -36,4 +36,9 @@ public class CustomerService {
                .orElseThrow(() -> new CustomerNotFoundException("Customer by id "+  customerId + "was not found"));
     }
 
+    public Customer loginUser(String email, String password){
+        return customerRepository.findCustomerByEmailAndPassword(email, password);
+    }
+
+
 }
