@@ -18,11 +18,14 @@ public class Vehicle {
     private int seats;
     private Date productionYear;
     private boolean isManual;
-    private int plateNumber;
+    @Column(length = 128)
+    private String plateNumber;
     private int insuranceNumber;
     private int horsePower;
     private float cost;
     private String conditionDescription;
+    @Column(length = 500)
+    private String url;
     @OneToMany(mappedBy = "vehicle")
     Set<CustomerRental> reservations;
 
@@ -30,7 +33,7 @@ public class Vehicle {
 
     }
 
-    public Vehicle(Long id, int cityId, String vehicleName, String manufacturer, String energyType, int seats, Date productionYear, boolean isManual, int plateNumber, int insuranceNumber, int horsePower, float cost, String conditionDescription) {
+    public Vehicle(Long id, int cityId, String vehicleName, String manufacturer, String energyType, int seats, Date productionYear, boolean isManual, String plateNumber, int insuranceNumber, int horsePower, float cost, String conditionDescription, String url) {
         this.vehicleId = id;
         this.cityId = cityId;
         this.vehicleName = vehicleName;
@@ -44,6 +47,7 @@ public class Vehicle {
         this.horsePower = horsePower;
         this.cost = cost;
         this.conditionDescription = conditionDescription;
+        this.url = url;
     }
 
     public Long getVehicleId() {
@@ -110,11 +114,11 @@ public class Vehicle {
         isManual = manual;
     }
 
-    public int getPlateNumber() {
+    public String getPlateNumber() {
         return plateNumber;
     }
 
-    public void setPlateNumber(int plateNumber) {
+    public void setPlateNumber(String plateNumber) {
         this.plateNumber = plateNumber;
     }
 
@@ -150,6 +154,22 @@ public class Vehicle {
         this.conditionDescription = conditionDescription;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public Set<CustomerRental> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Set<CustomerRental> reservations) {
+        this.reservations = reservations;
+    }
+
     @Override
     public String toString() {
         return "Vehicle{" +
@@ -165,6 +185,7 @@ public class Vehicle {
                 ", insuranceNumber=" + insuranceNumber +
                 ", horsePower=" + horsePower +
                 ", cost=" + cost +
+                ", url=" + url +
                 ", conditionDescription='" + conditionDescription + '\'' +
                 '}';
     }

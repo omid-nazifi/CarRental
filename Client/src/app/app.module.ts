@@ -32,6 +32,8 @@ import { CarOfferComponent } from './components/car-offer/car-offer.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentCarComponent } from './components/rent-car/rent-car.component';
+import { RestapiService } from './services/restapi.service';
+import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
 
 
@@ -45,6 +47,8 @@ import { RentCarComponent } from './components/rent-car/rent-car.component';
     LoginComponent,
     RegisterComponent,
     RentCarComponent,
+    AdminLoginComponent
+  
     
   ],
   imports: [
@@ -72,7 +76,8 @@ import { RentCarComponent } from './components/rent-car/rent-car.component';
     
   ],
   providers: [
-    CustomersService
+    CustomersService,
+    RestapiService
   ],
   bootstrap: [AppComponent]
 
