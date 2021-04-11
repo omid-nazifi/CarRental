@@ -1,7 +1,6 @@
 package at.wiencampus.se.carrental.config;
 
-import at.wiencampus.se.carrental.gen.ConvertResponse;
-import at.wiencampus.se.carrental.gen.CurrencyEnum;
+import at.wiencampus.se.carrental.gen.*;
 import at.wiencampus.se.carrental.service.CurrencyService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
