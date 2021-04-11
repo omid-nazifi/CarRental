@@ -1,4 +1,4 @@
-package edu.campuswien.se.carrental.currencyconverter;
+package edu.campuswien.se.carrental.currencyconverter.config;
 
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.ApplicationContext;
@@ -20,11 +20,20 @@ import org.springframework.xml.xsd.XsdSchema;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Configuration for SOAP service
+ * This class is for configuring the Spring message dispatcher servlet to receive the request
+ */
 @EnableWs
 @Configuration
 public class WebServiceConfig extends WsConfigurerAdapter {
 	public static final String NAMESPACE_URI = "http://campuswien.edu/se/carrental/currencyconverter";
 
+	/**
+	 * used for handling SOAP requests
+	 * @param applicationContext
+	 * @return
+	 */
 	@Bean
 	public ServletRegistrationBean<MessageDispatcherServlet> messageDispatcherServlet(ApplicationContext applicationContext) {
 		MessageDispatcherServlet servlet = new MessageDispatcherServlet();
@@ -33,6 +42,11 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 		return new ServletRegistrationBean<>(servlet, "/ws/*");
 	}
 
+	/**
+	 * This exposes a standard WSDL 1.1 using an XsdSchema. The WSDL name will be the same as the bean name.
+	 * @param currencySchema
+	 * @return
+	 */
 	@Bean(name = "currency")
 	public DefaultWsdl11Definition currencyWsdl11Definition(XsdSchema currencySchema) {
 		DefaultWsdl11Definition wsdl11Definition = new DefaultWsdl11Definition();
@@ -49,11 +63,20 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	}
 
 	// Logging
+
+	/**
+	 * To log the payload of our SOAP messages.
+	 * @return
+	 */
 	@Bean
 	PayloadLoggingInterceptor payloadLoggingInterceptor() {
 		return new PayloadLoggingInterceptor();
 	}
 
+	/**
+	 * To active validator by using the xsd file
+	 * @return
+	 */
 	@Bean
 	PayloadValidatingInterceptor payloadValidatingInterceptor() {
 		final PayloadValidatingInterceptor payloadValidatingInterceptor = new PayloadValidatingInterceptor();
@@ -62,6 +85,11 @@ public class WebServiceConfig extends WsConfigurerAdapter {
 	}
 
 	// Security
+
+	/**
+	 * will intercept the request and validate the username & password by the help of SimplePasswordValidationCallbackHandler
+	 * @return
+	 */
 	@Bean
 	XwsSecurityInterceptor securityInterceptor() {
 		XwsSecurityInterceptor securityInterceptor = new XwsSecurityInterceptor();
