@@ -18,7 +18,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
-        <maven-jaxb2-plugin.url>http://localhost:8080/ws</maven-jaxb2-plugin.url>
+        <!--suppress UnresolvedMavenProperty -->
+        <maven-jaxb2-plugin.url>${env.CURRENCY_SVC_URL}</maven-jaxb2-plugin.url>
         <maven-jaxb2-plugin.schema>${maven-jaxb2-plugin.url}/currency.wsdl</maven-jaxb2-plugin.schema>
         <maven-jaxb2-plugin.generatePackage>at.wiencampus.se.carrental.gen</maven-jaxb2-plugin.generatePackage>
     </properties>
@@ -97,6 +98,17 @@
                     <artifactId>jaxb-runtime</artifactId>
                 </dependency>
             </dependencies>
+        </profile>
+        <profile>
+            <id>CURRENCY_SVC_URL default value</id>
+            <activation>
+                <property>
+                    <name>!env.CURRENCY_SVC_URL</name>
+                </property>
+            </activation>
+            <properties>
+                <env.CURRENCY_SVC_URL>http://localhost:8080/ws</env.CURRENCY_SVC_URL>
+            </properties>
         </profile>
     </profiles>
     <!-- end::profile[] -->
