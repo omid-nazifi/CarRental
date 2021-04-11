@@ -1,0 +1,1 @@
+At first, we implemented it with the Python Flask framework. But finally we had to implement this service again with Java Spring Boot, because Python does not seem to be suitable for Soap Server and does not have good libraries for this purpose e.g a library can not support customized XSD and another one cannot support WS-Security.
