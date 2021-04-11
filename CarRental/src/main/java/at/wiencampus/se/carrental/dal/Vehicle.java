@@ -18,11 +18,13 @@ public class Vehicle {
     private int seats;
     private Date productionYear;
     private boolean isManual;
-    private int plateNumber;
+    @Column(length = 128)
+    private String plateNumber;
     private int insuranceNumber;
     private int horsePower;
     private float cost;
     private String conditionDescription;
+    @Column(length = 500)
     private String url;
     @OneToMany(mappedBy = "vehicle")
     Set<CustomerRental> reservations;
@@ -31,7 +33,7 @@ public class Vehicle {
 
     }
 
-    public Vehicle(Long id, int cityId, String vehicleName, String manufacturer, String energyType, int seats, Date productionYear, boolean isManual, int plateNumber, int insuranceNumber, int horsePower, float cost, String conditionDescription, String url) {
+    public Vehicle(Long id, int cityId, String vehicleName, String manufacturer, String energyType, int seats, Date productionYear, boolean isManual, String plateNumber, int insuranceNumber, int horsePower, float cost, String conditionDescription, String url) {
         this.vehicleId = id;
         this.cityId = cityId;
         this.vehicleName = vehicleName;
@@ -112,11 +114,11 @@ public class Vehicle {
         isManual = manual;
     }
 
-    public int getPlateNumber() {
+    public String getPlateNumber() {
         return plateNumber;
     }
 
-    public void setPlateNumber(int plateNumber) {
+    public void setPlateNumber(String plateNumber) {
         this.plateNumber = plateNumber;
     }
 

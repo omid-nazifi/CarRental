@@ -3,8 +3,7 @@ package at.wiencampus.se.carrental.service;
 import at.wiencampus.se.carrental.dal.Customer;
 import at.wiencampus.se.carrental.dal.CustomerRental;
 import at.wiencampus.se.carrental.dal.Vehicle;
-import at.wiencampus.se.carrental.gen.ConvertResponse;
-import at.wiencampus.se.carrental.gen.CurrencyEnum;
+import at.wiencampus.se.carrental.gen.*;
 import at.wiencampus.se.carrental.repository.CustomerRentalRepository;
 import at.wiencampus.se.carrental.repository.CustomerRepository;
 import at.wiencampus.se.carrental.repository.VehicleRepository;
@@ -24,36 +23,41 @@ public class VehicleService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public List<Vehicle> getAllVehicles(){
+    public List<Vehicle> getAllVehicles() {
         return vehicleRepository.findAll();
     }
 
-    public CustomerRental createVehicleRental(CustomerRental newCustomerRental){
+    public CustomerRental createVehicleRental(CustomerRental newCustomerRental) {
         customerRentalRepository.save(newCustomerRental);
         return newCustomerRental;
     }
 
-    public List<CustomerRental> getAllCustomerRentalForCustomer(long customerId){
+    public List<CustomerRental> getAllCustomerRentalForCustomer(long customerId) {
         Optional<Customer> customer = customerRepository.findCustomerByCustomerId(customerId);
         return customerRentalRepository.getCustomerRentalByCustomer(customer.get());
     }
 
-    public boolean returnRentalCar(long rentalId){
+    public boolean returnRentalCar(long rentalId) {
         Optional<CustomerRental> rental = customerRentalRepository.findById(rentalId);
-        if (rental == null) return false;
+        if (rental.isPresent())
+            return false;
         customerRentalRepository.deleteById(rentalId);
         return true;
     }
 
-    public List<Vehicle> getAllVehicleForCurrency(String currency){
+    public List<Vehicle> getAllVehicleForCurrency(String currency) {
         List<Vehicle> allVehicle = vehicleRepository.findAll();
         CurrencyService converter = new CurrencyService();
-        for (Vehicle vehicle:
-             allVehicle) {
+        for (Vehicle vehicle :
+                allVehicle) {
             double convertedPrice = converter.getCurrency(vehicle.getCost(), CurrencyEnum.fromValue(currency)).getPrice();
-            vehicle.setCost((float)convertedPrice);
+            vehicle.setCost((float) convertedPrice);
         }
         return allVehicle;
+    }
+
+    public Vehicle createNew(Vehicle vehicle) {
+        return vehicleRepository.save(vehicle);
     }
 
 }
