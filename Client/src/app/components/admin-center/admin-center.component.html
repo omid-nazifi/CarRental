@@ -1,44 +1,27 @@
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef> ID </th>
-      <td mat-cell *matCellDef="let rentNDriveUser"> {{rentNDriveUser.id}} </td>
-    </ng-container>
-  
-    <!-- First Name Column -->
-    <ng-container matColumnDef="firstName">
-      <th mat-header-cell *matHeaderCellDef> First Name </th>
-      <td mat-cell *matCellDef="let rentNDriveUser"> {{rentNDriveUser.firstName}} </td>
-    </ng-container>
-  
-    <!-- Second Name Column -->
-    <ng-container matColumnDef="secondName">
-      <th mat-header-cell *matHeaderCellDef> Second Name </th>
-      <td mat-cell *matCellDef="let rentNDriveUser"> {{rentNDriveUser.secondName}} </td>
-    </ng-container>
-  
-    <!-- Address Column -->
-    <ng-container matColumnDef="address">
-      <th mat-header-cell *matHeaderCellDef> Address </th>
-      <td mat-cell *matCellDef="let rentNDriveUser"> {{rentNDriveUser.address}} </td>
-    </ng-container>
-
-    <!-- Phone Column -->
-    <ng-container matColumnDef="phone">
-        <th mat-header-cell *matHeaderCellDef> Phone </th>
-        <td mat-cell *matCellDef="let rentNDriveUser"> {{rentNDriveUser.phone}} </td>
-      </ng-container>
-
-    <!-- Email Column -->
-    <ng-container matColumnDef="email">
-        <th mat-header-cell *matHeaderCellDef> Email </th>
-        <td mat-cell *matCellDef="let rentNDriveUser"> {{rentNDriveUser.email}} </td>
-      </ng-container>  
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
+<div class="grid-container">
+    <h1 class="mat-h1">Customers</h1>
+    <mat-grid-list cols="2" rowHeight="550px">
+      <mat-grid-tile *ngFor="let customer of customers " [customer]="customer">
+        <mat-card class="dashboard-card" style="text-align: center;">
+          <mat-card-header>
+            <mat-card-title>
+              {{customer.firstName}} {{customer.lastName}} 
+            </mat-card-title>
+          </mat-card-header>
+          <mat-card-content class="dashboard-card-content" style="text-align: center;">
+            <p> customer ID: {{customer.customerId}}</p>
+            <p> City ID: {{customer.personalId}}</p>
+            <p> Energytype: {{customer.firstName}}</p>
+            <p> Seats: {{customer.lastName}}</p>
+            <p> Productionyear: {{customer.address}}</p>
+            <p> Manual transmission: {{customer.email}}</p>
+            <p> Plate Number: {{customer.number}}</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button onClick="window.open('//localhost:5000/redirect','_self')"
+              color="primary">Authorize</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
