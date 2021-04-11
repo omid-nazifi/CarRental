@@ -22,6 +22,8 @@ public class Customer {
     @Column(name = "email", nullable = false)
     private String email;
     private String number;
+    @Column(name = "password", nullable = false, columnDefinition = "TEXT")
+    private String password;
 
     @OneToMany(mappedBy = "customer")
     Set<CustomerRental> reservations;
@@ -103,6 +105,14 @@ public class Customer {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override

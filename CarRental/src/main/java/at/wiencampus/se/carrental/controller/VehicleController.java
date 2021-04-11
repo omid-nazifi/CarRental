@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/vehicle")
-public class CarController extends IController {
+public class VehicleController extends IController {
 
     @Autowired
     VehicleService vehicleService;
@@ -28,6 +28,7 @@ public class CarController extends IController {
         return new ResponseEntity<>(vehicleService.getAllVehicles(), HttpStatus.OK);
     }
 
+    @GetMapping("/rental")
     public ResponseEntity<List<CustomerRental>> getAllVehicleRentalForCustomer(long customerId){
         return new ResponseEntity<>(vehicleService.getAllCustomerRentalForCustomer(customerId), HttpStatus.OK);
     }
