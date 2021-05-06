@@ -6,16 +6,16 @@
     <h1 id="litheader">Login</h1>
     <div class="inset">
       <p>
-        <input type="text" name="username" [(ngModel)]="email" id="email" placeholder="email">
+        <input type="text" name="email" [(ngModel)]="email" id="email" placeholder="email">
       </p>
       <p>
         <input type="password" name="password" [(ngModel)]="password" id="password" placeholder="password">
       </p>
     </div>
     <p class="p-container">
-      <input type="submit" name="Login" id="go" value="Login" (click)="doLogin()">
+      <input type="submit" name="Login" id="go" value="Login" (click)="checkLogin()">
     </p>
-    <p class="p-container">
+    <!--<p class="p-container">
         <input type="submit" name="Register" id="go" value="Register" (click)="goToRegister()">
-      </p>
+      </p>-->
   </form>
