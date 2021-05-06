@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
-import { RestapiService } from 'src/app/services/restapi.service';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication.service';
 
 
 @Component({
@@ -10,27 +10,22 @@ import { RestapiService } from 'src/app/services/restapi.service';
 })
 export class LoginComponent implements OnInit {
 
-  email:string;
-  password:string;
-  message:any
+  email = ''
+  password = ''
+  invalidLogin = false
 
-  constructor(private service: RestapiService, private router: Router) { }
-
-
+  constructor(private router: Router,
+    private loginservice: AuthenticationService) { }
 
   ngOnInit() {
   }
 
-  doLogin(){
-    let response = this.service.login(this.email, this.password);
-    response.subscribe(data=>{
-      this.message = data;
-      this.router.navigate(["/car-offer"])
-    })
+  checkLogin() {
+    if (this.loginservice.authenticate(this.email, this.password)
+    ) {
+      this.router.navigate(['/car-offer'])
+      this.invalidLogin = false
+    } else
+      this.invalidLogin = true
   }
-
-  goToRegister(){
-    
-      this.router.navigate(["/register"])
-    }
 }
