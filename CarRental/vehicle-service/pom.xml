@@ -12,13 +12,17 @@
     <name>vehicle-service</name>
 
     <properties>
-        <!--suppress UnresolvedMavenProperty -->
         <maven-jaxb2-plugin.url>${env.CURRENCY_SVC_URL}</maven-jaxb2-plugin.url>
         <maven-jaxb2-plugin.schema>${maven-jaxb2-plugin.url}/currency.wsdl</maven-jaxb2-plugin.schema>
-        <maven-jaxb2-plugin.generatePackage>at.wiencampus.se.carrental.gen</maven-jaxb2-plugin.generatePackage>
+        <maven-jaxb2-plugin.generatePackage>at.wiencampus.se.vehicleservice.gen</maven-jaxb2-plugin.generatePackage>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>at.wiencampus.se</groupId>
+            <artifactId>common</artifactId>
+            <version>2.0</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web-services</artifactId>
@@ -28,11 +32,6 @@
                     <artifactId>spring-boot-starter-tomcat</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-        <!-- end::dependency[] -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework.kafka</groupId>
@@ -45,14 +44,20 @@
             <optional>true</optional>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!-- Datasource -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 
