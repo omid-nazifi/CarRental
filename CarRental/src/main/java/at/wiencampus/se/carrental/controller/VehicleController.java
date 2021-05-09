@@ -25,7 +25,7 @@ public class VehicleController extends IController {
     }
 
     @GetMapping("/rental")
-    public ResponseEntity<List<CustomerRental>> getAllVehicleRentalForCustomer(long customerId) {
+    public ResponseEntity<List<CustomerRental>> getAllVehicleRentalForCustomer(String customerId) {
         return new ResponseEntity<>(vehicleService.getAllCustomerRentalForCustomer(customerId), HttpStatus.OK);
     }
 
@@ -35,13 +35,13 @@ public class VehicleController extends IController {
         return new ResponseEntity<>(customerRental, HttpStatus.OK);
     }
 
-    @GetMapping("/all/{currency}")
+    /*@GetMapping("/all/{currency}")
     public ResponseEntity<List<Vehicle>> getAllVehiclesWithCurrency(@PathVariable("currency") String currency) {
         return new ResponseEntity<>(vehicleService.getAllVehicleForCurrency(currency), HttpStatus.OK);
-    }
+    }*/
 
     @PutMapping("/vehicleRent/return/{rentalId}")
-    public boolean returnRentalCar(@PathVariable("rentalId") long rentalId) {
+    public boolean returnRentalCar(@PathVariable("rentalId") String rentalId) {
         return vehicleService.returnRentalCar(rentalId);
     }
 

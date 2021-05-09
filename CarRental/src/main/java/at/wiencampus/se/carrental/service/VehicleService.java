@@ -3,7 +3,6 @@ package at.wiencampus.se.carrental.service;
 import at.wiencampus.se.carrental.dal.Customer;
 import at.wiencampus.se.carrental.dal.CustomerRental;
 import at.wiencampus.se.carrental.dal.Vehicle;
-import at.wiencampus.se.carrental.gen.*;
 import at.wiencampus.se.carrental.repository.CustomerRentalRepository;
 import at.wiencampus.se.carrental.repository.CustomerRepository;
 import at.wiencampus.se.carrental.repository.VehicleRepository;
@@ -32,12 +31,12 @@ public class VehicleService {
         return newCustomerRental;
     }
 
-    public List<CustomerRental> getAllCustomerRentalForCustomer(long customerId) {
+    public List<CustomerRental> getAllCustomerRentalForCustomer(String customerId) {
         Optional<Customer> customer = customerRepository.findCustomerByCustomerId(customerId);
         return customerRentalRepository.getCustomerRentalByCustomer(customer.get());
     }
 
-    public boolean returnRentalCar(long rentalId) {
+    public boolean returnRentalCar(String rentalId) {
         Optional<CustomerRental> rental = customerRentalRepository.findById(rentalId);
         if (rental.isPresent())
             return false;
@@ -45,7 +44,7 @@ public class VehicleService {
         return true;
     }
 
-    public List<Vehicle> getAllVehicleForCurrency(String currency) {
+  /*  public List<Vehicle> getAllVehicleForCurrency(String currency) {
         List<Vehicle> allVehicle = vehicleRepository.findAll();
         CurrencyService converter = new CurrencyService();
         for (Vehicle vehicle :
@@ -54,7 +53,7 @@ public class VehicleService {
             vehicle.setCost((float) convertedPrice);
         }
         return allVehicle;
-    }
+    }*/
 
     public Vehicle createNew(Vehicle vehicle) {
         return vehicleRepository.save(vehicle);
