@@ -1,30 +1,31 @@
 package at.wiencampus.se.customerservice.model;
 
-import javax.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity(name = "country")
+import java.util.UUID;
+
+@Document("country")
 public class Country {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false,updatable = false)
-    private Long countryId;
+    private String countryId;
     private String countryName;
 
     public Country() {
 
     }
 
-    public Country(Long id, String name) {
-        this.countryId = id;
+    public Country(String name) {
+        this.countryId = UUID.randomUUID().toString();
         this.countryName = name;
     }
 
-    public Long getCountryId() {
+    public String getCountryId() {
         return countryId;
     }
 
-    public void setCountryId(Long id) {
+    public void setCountryId(String id) {
         this.countryId = id;
     }
 
