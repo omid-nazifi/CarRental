@@ -1,6 +1,7 @@
 package edu.campuswien.se.carrental.currencyconverter.logic;
 
-import edu.campuswien.se.carrental.currencyconverter.CurrencyEnum;
+
+import edu.campuswien.se.carrental.currencyconverter.dto.CurrencyEnum;
 
 public interface Converter {
     /**
