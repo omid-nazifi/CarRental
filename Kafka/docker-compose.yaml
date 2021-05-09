@@ -20,7 +20,7 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
       KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: '1'
-      KAFKA_CREATE_TOPICS: converterRequest:1:1,converterResponse:1:1
+      KAFKA_CREATE_TOPICS: customer_login_request:1:1,customer_login_reply:1:1,customer_register_request:1:1,customer_register_reply:1:1,customer_all_request:1:1,customer_all_reply:1:1
       KAFKA_ADVERTISED_HOST_NAME: host.docker.internal
     image: 'wurstmeister/kafka'
     volumes:
