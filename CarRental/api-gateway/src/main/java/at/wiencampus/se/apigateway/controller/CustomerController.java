@@ -12,16 +12,15 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/customer")
+@RequestMapping("/api/auth")
 public class CustomerController extends IController {
 
     @Autowired
     CustomerService customerService;
 
     @PostMapping("/login")
-    public ResponseEntity<CustomerData> customerLogin(@RequestParam String email, @RequestParam String password) {
-
-        return new ResponseEntity<>(customerService.loginUser(email, password), HttpStatus.OK);
+    public ResponseEntity<CustomerData> customerLogin(@RequestBody CustomerData customer) {
+        return new ResponseEntity<>(customerService.loginUser(customer.getEmail(), customer.getPassword()), HttpStatus.OK);
     }
 
     @PostMapping(value = "/register")

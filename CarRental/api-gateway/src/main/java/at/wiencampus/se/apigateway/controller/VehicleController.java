@@ -29,7 +29,7 @@ public class VehicleController extends IController {
     }
 
     @GetMapping("/rental")
-    public ResponseEntity<List<CustomerRentalData>> getAllVehicleRentalForCustomer(long customerId) {
+    public ResponseEntity<List<CustomerRentalData>> getAllVehicleRentalForCustomer(String customerId) {
         return new ResponseEntity<>(vehicleService.getAllCustomerRentalForCustomer(customerId), HttpStatus.OK);
     }
 
