@@ -20,22 +20,21 @@ class CustomerServiceTest {
     Customer newCustomer = new Customer((long)111, 1, "firstName", "lastName", "address", "email@email.com", "number", "password");
 
     @Test
-    void addCustomerAndFindCustomerTest() {
+    void registerCustomersTest() {
         service.addCustomer(newCustomer);
-        Customer c = service.loginUser("email@email.com", "password");
-        assertNotNull(service.findCustomer(c.getCustomerId()));
-
-    }
-
-/*    @Test
-    void getCustomersTest() {
-        assertFalse(service.getCustomers().isEmpty());
+        assertNotNull(service.findCustomer(newCustomer.getCustomerId()));
     }
 
     @Test
-    void loginUser() {
-        assertNotNull(service.loginUser("email","password"));
-    }*/
+    void loginCustomerTest() {
+        Customer c = service.loginUser("email@email.com", "password");
+        assertNotNull(service.findCustomer(c.getCustomerId()));
+    }
+
+    @Test
+    void getAllCustomers() {
+        assertNotNull(service.getCustomers());
+    }
 
     @Test
     void deleteCustomer() {

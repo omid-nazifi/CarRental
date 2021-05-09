@@ -19,9 +19,9 @@ public class CustomerController extends IController {
     CustomerService customerService;
 
     @PostMapping("/login")
-    public ResponseEntity<Customer> customerLogin(@RequestParam String email, @RequestParam String password) {
+    public ResponseEntity<Customer> customerLogin(@RequestBody Customer customer) {
 
-        return new ResponseEntity<>(customerService.loginUser(email, password), HttpStatus.OK);
+        return new ResponseEntity<>(customerService.loginUser(customer.getEmail(), customer.getPassword()), HttpStatus.OK);
     }
 
     @PostMapping(value = "/register")
