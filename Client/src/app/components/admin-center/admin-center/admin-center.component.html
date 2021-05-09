@@ -1,0 +1,17 @@
+<div class="grid-container">
+    <h1 class="mat-h1">Customer</h1>
+    <mat-grid-list cols="2" rowHeight="750px">
+        <mat-grid-tile *ngFor="let customer of customers " [customer]="customer">
+            <mat-card class="dashboard-card">
+                <mat-card-header>
+                  <mat-card-title>
+                    {{customer.firstName}} {{customer.lastName}}
+                  </mat-card-title>
+                </mat-card-header>
+                <mat-card-content class="dashboard-card-content">
+                    <!--<p>Customer-ID: {{customer.customerId}}</p>-->
+                </mat-card-content>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>

@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { CustomersService } from './services/customers.service';
+
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
@@ -22,32 +22,32 @@ import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
-import { WelcomeScreenComponent } from './components/welcome-screen/welcome-screen.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
-import { AdminCenterComponent } from './components/admin-center/admin-center.component';
+
 import { CarOfferComponent } from './components/car-offer/car-offer.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RentCarComponent } from './components/rent-car/rent-car.component';
-import { RestapiService } from './services/restapi.service';
-import { AdminLoginComponent } from './components/admin-login/admin-login.component';
 
+
+import { authInterceptorProviders } from '../app/_helpers/auth.interceptor';
+import { AdminCenterComponent } from './components/admin-center/admin-center/admin-center.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SiteNavigationComponent,
-    WelcomeScreenComponent,
-    AdminCenterComponent,
     CarOfferComponent,
     LoginComponent,
     RegisterComponent,
     RentCarComponent,
-    AdminLoginComponent
+    AdminCenterComponent,
   
     
   ],
@@ -72,12 +72,13 @@ import { AdminLoginComponent } from './components/admin-login/admin-login.compon
     MatSelectModule,
     MatTabsModule,
     MatCheckboxModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatFormFieldModule
     
   ],
   providers: [
-    CustomersService,
-    RestapiService
+    authInterceptorProviders
   ],
   bootstrap: [AppComponent]
 

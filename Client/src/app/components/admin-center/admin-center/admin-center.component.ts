@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { from } from 'rxjs';
-import { CustomersService } from 'src/app/services/customers.service';
-import { Customer } from '../../models/Customer';
+import { CustomerService } from 'src/app/services/customer.service';
+import { Customer } from '../../../models/Customer';
+
 @Component({
   selector: 'app-admin-center',
   templateUrl: './admin-center.component.html',
@@ -10,20 +10,18 @@ import { Customer } from '../../models/Customer';
 export class AdminCenterComponent implements OnInit {
 
   customers: Customer[];
-  customersService: CustomersService;
-
-  constructor(customersService: CustomersService) {
-    this.customersService=customersService;
+  customerService: CustomerService;
+  Constructor(customerService: CustomerService){
+    this.customerService=customerService;
   }
 
   ngOnInit(): void {
-    this.customersService.getCustomers().subscribe(res => {
+    this.customerService.getCustomers().subscribe(res => {
       console.log(res);
       this.customers=res;
     },err => {
       console.log(err);
     })
   }
-  
 
 }
