@@ -8,8 +8,8 @@ import { Customer } from '../models/Customer';
 @Injectable({
   providedIn: 'root'
 })
-export class CustomersService {
-  private baseUrl = "http://localhost:7000/customer/all";
+export class CustomerService {
+  private baseUrl = "http://localhost:7000/api/auth/all";
 
   constructor(private http: HttpClient) { }
 
@@ -21,7 +21,7 @@ export class CustomersService {
         map((data: any[]) =>
           data.map(
             (item: any) =>
-              new Customer(item.customerId, item.personalId, item.firstName, item.lastName, item.address, item.email, item.number)
+              new Customer(item.customerID, item.personalId, item.firstName, item.lastName, item.address, item.email, item.number)
           )
         )
       );
