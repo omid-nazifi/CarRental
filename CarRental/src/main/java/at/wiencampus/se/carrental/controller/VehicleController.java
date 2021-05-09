@@ -24,21 +24,15 @@ public class VehicleController extends IController {
         return new ResponseEntity<>(vehicleService.getAllVehicles(), HttpStatus.OK);
     }
 
-    @GetMapping("/rental")
-    public ResponseEntity<List<CustomerRental>> getAllVehicleRentalForCustomer(String customerId) {
+    @GetMapping("/rental/{customerId}")
+    public ResponseEntity<List<CustomerRental>> getAllVehicleRentalForCustomer(@PathVariable("customerId") String customerId) {
         return new ResponseEntity<>(vehicleService.getAllCustomerRentalForCustomer(customerId), HttpStatus.OK);
     }
 
     @PutMapping("/vehicleRent")
     public ResponseEntity<CustomerRental> rentAVehicle(@RequestBody CustomerRental customerRental) {
-        vehicleService.createVehicleRental(customerRental);
-        return new ResponseEntity<>(customerRental, HttpStatus.OK);
+        return new ResponseEntity<>(vehicleService.createVehicleRental(customerRental), HttpStatus.OK);
     }
-
-    /*@GetMapping("/all/{currency}")
-    public ResponseEntity<List<Vehicle>> getAllVehiclesWithCurrency(@PathVariable("currency") String currency) {
-        return new ResponseEntity<>(vehicleService.getAllVehicleForCurrency(currency), HttpStatus.OK);
-    }*/
 
     @PutMapping("/vehicleRent/return/{rentalId}")
     public boolean returnRentalCar(@PathVariable("rentalId") String rentalId) {
@@ -46,7 +40,7 @@ public class VehicleController extends IController {
     }
 
     @PostMapping("/addVehicle")
-    public ResponseEntity<Vehicle> returnRentalCar(@RequestBody Vehicle vehicle) {
+    public ResponseEntity<Vehicle> addVehicle(@RequestBody Vehicle vehicle) {
         Vehicle saved = vehicleService.createNew(vehicle);
         return new ResponseEntity<Vehicle>(saved, HttpStatus.OK);
     }

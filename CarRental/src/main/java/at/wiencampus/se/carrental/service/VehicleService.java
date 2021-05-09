@@ -27,18 +27,16 @@ public class VehicleService {
     }
 
     public CustomerRental createVehicleRental(CustomerRental newCustomerRental) {
-        customerRentalRepository.save(newCustomerRental);
-        return newCustomerRental;
+        return customerRentalRepository.save(newCustomerRental);
     }
 
     public List<CustomerRental> getAllCustomerRentalForCustomer(String customerId) {
-        Optional<Customer> customer = customerRepository.findCustomerByCustomerId(customerId);
-        return customerRentalRepository.getCustomerRentalByCustomer(customer.get());
+        return customerRentalRepository.findByCustomerId(customerId);
     }
 
     public boolean returnRentalCar(String rentalId) {
         Optional<CustomerRental> rental = customerRentalRepository.findById(rentalId);
-        if (rental.isPresent())
+        if (rental.isPresent() == false)
             return false;
         customerRentalRepository.deleteById(rentalId);
         return true;

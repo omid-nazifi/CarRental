@@ -8,5 +8,5 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import java.util.List;
 @EnableMongoRepositories
 public interface CustomerRentalRepository extends MongoRepository<CustomerRental, String> {
-    List<CustomerRental> getCustomerRentalByCustomer(Customer customer);
+    List<CustomerRental> findByCustomerId(String customerId);
 }

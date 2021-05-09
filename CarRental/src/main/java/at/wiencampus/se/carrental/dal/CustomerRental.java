@@ -13,11 +13,8 @@ public class CustomerRental {
     @Id
     private String id;
 
-    @DBRef
-    private Customer customer;
-
-    @DBRef
-    private Vehicle vehicle;
+    private String customerId;
+    private String vehicleId;
 
     private Date reservationDate;
 
@@ -33,6 +30,21 @@ public class CustomerRental {
         this.id= UUID.randomUUID().toString();
     }
 
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(String vehicleId) {
+        this.vehicleId = vehicleId;
+    }
 
     public Date getReservationDate() {
         return reservationDate;
@@ -78,8 +90,8 @@ public class CustomerRental {
     public String toString() {
         return "CustomerRental{" +
                 "id=" + id +
-                ", customer=" + customer.getCustomerId() +
-                ", vehicle=" + vehicle.getVehicleId() +
+                ", customer=" + customerId +
+                ", vehicle=" + vehicleId +
                 ", reservationDate=" + reservationDate +
                 ", pickUpDate=" + pickUpDate +
                 ", dropOffDate=" + dropOffDate +
