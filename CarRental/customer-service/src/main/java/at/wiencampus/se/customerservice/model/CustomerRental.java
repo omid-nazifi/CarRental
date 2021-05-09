@@ -1,23 +1,22 @@
 package at.wiencampus.se.customerservice.model;
 
-import javax.persistence.*;
-import java.util.Date;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Table(name = "customerRental",uniqueConstraints = @UniqueConstraint(name = "customer_reservationDate_unique",columnNames = "reservationDate"))
-@Entity(name = "customerRental")
+import java.util.Date;
+import java.util.UUID;
+
+@Document("customerRental")
 public class CustomerRental {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false,updatable = false)
-    private Long id;
+    private String id;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @DBRef
     private Customer customer;
 
-    @ManyToOne
-    @JoinColumn(name = "vehicle_id")
+    @DBRef
     private Vehicle vehicle;
 
     private Date reservationDate;
@@ -31,6 +30,7 @@ public class CustomerRental {
     private float totalCost;
 
     public CustomerRental() {
+        this.id = UUID.randomUUID().toString();
     }
 
 
