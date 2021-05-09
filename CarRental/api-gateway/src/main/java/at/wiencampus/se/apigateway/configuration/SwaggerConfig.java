@@ -1,4 +1,4 @@
-package at.wiencampus.se.apigateway.config;
+package at.wiencampus.se.apigateway.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

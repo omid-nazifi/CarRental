@@ -1,46 +1,91 @@
-//package at.wiencampus.se.apigateway.service;
-//
-//import at.wiencampus.se.customerservice.model.Customer;
-//import org.springframework.stereotype.Service;
-//
-//import java.util.Collections;
-//import java.util.List;
-//
-//@Service
-//public class CustomerService {
-//
-//    public Customer addCustomer(Customer customer) {
-//        customer.setCustomerId(123L);
-//        return customer;
-//    }
-//
-//    public List<Customer> getCustomers() {
-//        Customer saved = new Customer();
-//        saved.setFirstName("Max");
-//        saved.setLastName("Muster");
-//        saved.setEmail("max.muster@campuswien.at");
-//        return Collections.singletonList(saved);
-//    }
-//
-//    public void deleteCustomer(Long customerId) {
-//
-//    }
-//
-//    public Customer findCustomer(Long customerId) {
-//        Customer found = new Customer();
-//        found.setFirstName("Max");
-//        found.setLastName("Muster");
-//        found.setEmail("max.muster@campuswien.at");
-//        return found;
-//    }
-//
-//    public Customer loginUser(String email, String password) {
-//        Customer saved = new Customer();
-//        saved.setFirstName("Max");
-//        saved.setLastName("Muster");
-//        saved.setEmail(email);
-//        return saved;
-//    }
-//
-//
-//}
+package at.wiencampus.se.apigateway.service;
+
+import at.wiencampus.se.common.dto.*;
+import org.apache.kafka.clients.consumer.ConsumerRecord;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.header.internals.RecordHeader;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.kafka.requestreply.ReplyingKafkaTemplate;
+import org.springframework.kafka.requestreply.RequestReplyFuture;
+import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class CustomerService {
+
+    @Autowired
+    private ReplyingKafkaTemplate<String, CustomerServiceRequest, CustomerServiceReply> requestReplyKafkaTemplate;
+
+    @Value("${kafka.customer.topic.login.request}")
+    public String REQUEST_TOPIC_LOGIN;
+    @Value("${kafka.customer.topic.login.reply}")
+    public String REPLY_TOPIC_LOGIN;
+    @Value("${kafka.customer.topic.register.request}")
+    public String REQUEST_TOPIC_REGISTER;
+    @Value("${kafka.customer.topic.register.reply}")
+    public String REPLY_TOPIC_REGISTER;
+    @Value("${kafka.customer.topic.get_all.request}")
+    public String REQUEST_TOPIC_GET_ALL;
+    @Value("${kafka.customer.topic.get_all.reply}")
+    public String REPLY_TOPIC_GET_ALL;
+
+    public Customer registerCustomer(Customer customer) {
+        CustomerServiceRequest request = new CustomerServiceRequest();
+        request.setName(CustomerServiceName.Register);
+        request.setCustomer(customer);
+
+            //call MService
+            CustomerServiceReply reply = sendAndReceive(request, REQUEST_TOPIC_REGISTER, REPLY_TOPIC_REGISTER);
+            if (reply.getName() == CustomerServiceName.Register) {
+                return reply.getCustomer();
+            } else {
+                throw new UnsupportedOperationException("Response Type is wrong! (" + reply.getName() + ")");
+            }
+    }
+
+    public List<Customer> getCustomers() {
+        CustomerServiceRequest request = new CustomerServiceRequest();
+        request.setName(CustomerServiceName.GetAll);
+        request.setLoginData(null);
+        request.setCustomer(null);
+
+        //call MService
+        CustomerServiceReply reply = sendAndReceive(request, REQUEST_TOPIC_GET_ALL, REPLY_TOPIC_GET_ALL);
+        if (reply.getName() == CustomerServiceName.GetAll) {
+            return reply.getCustomers();
+        }
+        throw new UnsupportedOperationException("Response Type is wrong! (" + reply.getName() + ")");
+    }
+
+    public Customer loginUser(String email, String password) {
+        Login loginData = new Login(email, password);
+        CustomerServiceRequest request = new CustomerServiceRequest();
+        request.setName(CustomerServiceName.Login);
+        request.setLoginData(loginData);
+
+        //call service
+        CustomerServiceReply reply = sendAndReceive(request, REQUEST_TOPIC_LOGIN, REPLY_TOPIC_LOGIN);
+        if (reply.getName() == CustomerServiceName.Login) {
+            return reply.getCustomer();
+        }
+        throw new UnsupportedOperationException("Response Type is wrong! (" + reply.getName() + ")");
+    }
+
+    private CustomerServiceReply sendAndReceive(CustomerServiceRequest request, String requestTopic, String replyTopic) {
+        try {
+            ProducerRecord<String, CustomerServiceRequest> record = new ProducerRecord<String, CustomerServiceRequest>(requestTopic, request);
+            record.headers().add(new RecordHeader(KafkaHeaders.REPLY_TOPIC, replyTopic.getBytes()));
+            RequestReplyFuture<String, CustomerServiceRequest, CustomerServiceReply> sendAndReceive = requestReplyKafkaTemplate.sendAndReceive(record);
+
+            ConsumerRecord<String, CustomerServiceReply> consumerRecord = sendAndReceive.get();
+            CustomerServiceReply reply = consumerRecord.value();
+            return reply;
+        } catch (Exception e) {
+            throw new RuntimeException("sendAndReceive() Failed!", e);
+        }
+    }
+
+}
