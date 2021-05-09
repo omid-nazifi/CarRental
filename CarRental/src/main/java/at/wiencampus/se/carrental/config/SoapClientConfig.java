@@ -8,7 +8,7 @@ import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 
 @Configuration
 public class SoapClientConfig {
-
+/*
     @Value("${soap.generatepackage}")
     private String contextPath;
 
@@ -29,5 +29,5 @@ public class SoapClientConfig {
         client.setMarshaller(marshaller);
         client.setUnmarshaller(marshaller);
         return client;
-    }
+    }*/
 }

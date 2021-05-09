@@ -1,32 +1,31 @@
 package at.wiencampus.se.carrental.dal;
 
-import javax.persistence.*;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.annotation.Id;
+import java.util.UUID;
 
-@Entity(name = "city")
+@Document("city")
 public class City {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false,updatable = false)
-    private Long cityId;
+    private String cityId;
     private int countryId;
     private String cityName;
 
     public City() {
-
+        this.cityId= UUID.randomUUID().toString();
     }
 
-    public City(Long cityId, int countryId, String name) {
-        this.cityId = cityId;
+    public City(int countryId, String name) {
+
+        this.cityId= UUID.randomUUID().toString();
         this.countryId = countryId;
         this.cityName = name;
     }
 
-    public Long getCityId() {
-        return cityId;
-    }
+    public String getCityId() { return cityId; }
 
-    public void setCityId(Long id) {
+    public void setCityId(String id) {
         this.cityId = id;
     }
 

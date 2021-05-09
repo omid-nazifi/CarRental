@@ -3,6 +3,7 @@ package at.wiencampus.se.carrental.service;
 import at.wiencampus.se.carrental.dal.Customer;
 import at.wiencampus.se.carrental.exception.CustomerNotFoundException;
 import at.wiencampus.se.carrental.repository.CustomerRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,12 +23,12 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
-    public void deleteCustomer(Long customerId) {
+    public void deleteCustomer(String customerId) {
         customerRepository
                 .deleteById(customerId);
     }
 
-    public Customer findCustomer(Long customerId) {
+    public Customer findCustomer(String customerId) {
         return customerRepository
                 .findCustomerByCustomerId(customerId)
                 .orElseThrow(() -> new CustomerNotFoundException("Customer by id " + customerId + "was not found"));
