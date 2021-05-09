@@ -1,6 +1,6 @@
 package edu.campuswien.se.carrental.currencyconverter.logic;
 
-import edu.campuswien.se.carrental.currencyconverter.CurrencyEnum;
+import edu.campuswien.se.carrental.currencyconverter.dto.CurrencyEnum;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

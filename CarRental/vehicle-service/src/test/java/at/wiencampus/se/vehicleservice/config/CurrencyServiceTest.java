@@ -1,7 +1,7 @@
 package at.wiencampus.se.vehicleservice.config;
 
-import at.wiencampus.se.vehicleservice.configuration.SoapClientConfig;
-import at.wiencampus.se.vehicleservice.gen.*;
+import at.wiencampus.se.common.dto.CurrencyConvertReply;
+import at.wiencampus.se.common.dto.CurrencyEnum;
 import at.wiencampus.se.vehicleservice.service.CurrencyService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -12,17 +12,14 @@ import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-//Ensure that the Soap Webservice is running before executing this test
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {SoapClientConfig.class, TestContextConfiguration.class}, loader = AnnotationConfigContextLoader.class)
+@ContextConfiguration(classes = {TestContextConfiguration.class}, loader = AnnotationConfigContextLoader.class)
 public class CurrencyServiceTest {
-
-    @Autowired
-    CurrencyService currencyService;
 
     @Test
     public void getCurrencyTest() {
-        ConvertResponse response = currencyService.getCurrency(1, CurrencyEnum.EUR);
+        CurrencyService currencyService = new CurrencyService();
+        CurrencyConvertReply response = currencyService.getCurrency(1, CurrencyEnum.EUR);
         assertNotNull(response);
     }
 }

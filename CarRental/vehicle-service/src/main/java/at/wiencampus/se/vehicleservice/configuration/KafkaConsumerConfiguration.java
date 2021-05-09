@@ -1,7 +1,6 @@
 package at.wiencampus.se.vehicleservice.configuration;
 
 import at.wiencampus.se.common.dto.*;
-import at.wiencampus.se.vehicleservice.gen.CurrencyEnum;
 import at.wiencampus.se.vehicleservice.model.CustomerRental;
 import at.wiencampus.se.vehicleservice.model.Vehicle;
 import at.wiencampus.se.vehicleservice.repository.CustomerRentalRepository;
