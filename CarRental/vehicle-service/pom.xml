@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>at.wiencampus.se</groupId>
+        <artifactId>carrental</artifactId>
+        <version>2.0</version>
+    </parent>
+
+    <artifactId>vehicle-service</artifactId>
+    <name>vehicle-service</name>
+
+    <properties>
+        <!--suppress UnresolvedMavenProperty -->
+        <maven-jaxb2-plugin.url>${env.CURRENCY_SVC_URL}</maven-jaxb2-plugin.url>
+        <maven-jaxb2-plugin.schema>${maven-jaxb2-plugin.url}/currency.wsdl</maven-jaxb2-plugin.schema>
+        <maven-jaxb2-plugin.generatePackage>at.wiencampus.se.carrental.gen</maven-jaxb2-plugin.generatePackage>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web-services</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- end::dependency[] -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- tag::profile[] -->
+    <profiles>
+        <profile>
+            <id>java11</id>
+            <activation>
+                <jdk>[11,)</jdk>
+            </activation>
+
+            <dependencies>
+                <dependency>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-runtime</artifactId>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>CURRENCY_SVC_URL default value</id>
+            <activation>
+                <property>
+                    <name>!env.CURRENCY_SVC_URL</name>
+                </property>
+            </activation>
+            <properties>
+                <env.CURRENCY_SVC_URL>http://localhost:8080/ws</env.CURRENCY_SVC_URL>
+            </properties>
+        </profile>
+    </profiles>
+    <!-- end::profile[] -->
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.14.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaLanguage>WSDL</schemaLanguage>
+                    <generateDirectory>${project.build.sourceDirectory}/</generateDirectory>
+                    <generatePackage>${maven-jaxb2-plugin.generatePackage}</generatePackage>
+                    <schemas>
+                        <schema>
+                            <url>${maven-jaxb2-plugin.schema}</url>
+                        </schema>
+                    </schemas>
+                </configuration>
+            </plugin>
+            <!-- end::wsdl[] -->
+        </plugins>
+    </build>
+
+</project>
