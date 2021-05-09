@@ -14,6 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 public class CustomerServiceReply implements Serializable {
     private CustomerServiceName name;
-    private Customer customer;
-    private List<Customer> customers;
+    private CustomerData customerData;
+    private List<CustomerData> customers;
+    private Exception exception;
 }

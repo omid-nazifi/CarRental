@@ -2,7 +2,7 @@ package at.wiencampus.se.apigateway.controller;
 
 
 import at.wiencampus.se.apigateway.service.CustomerService;
-import at.wiencampus.se.common.dto.Customer;
+import at.wiencampus.se.common.dto.CustomerData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,21 +19,21 @@ public class CustomerController extends IController {
     CustomerService customerService;
 
     @PostMapping("/login")
-    public ResponseEntity<Customer> customerLogin(@RequestParam String email, @RequestParam String password) {
+    public ResponseEntity<CustomerData> customerLogin(@RequestParam String email, @RequestParam String password) {
 
         return new ResponseEntity<>(customerService.loginUser(email, password), HttpStatus.OK);
     }
 
     @PostMapping(value = "/register")
-    public ResponseEntity<Customer> customerRegister(@RequestBody Customer newCustomer) {
+    public ResponseEntity<CustomerData> customerRegister(@RequestBody CustomerData newCustomer) {
 
-        Customer savedCustomer = customerService.registerCustomer(newCustomer);
+        CustomerData savedCustomer = customerService.registerCustomer(newCustomer);
         return new ResponseEntity<>(savedCustomer, HttpStatus.OK);
     }
 
     @GetMapping(value = "/all")
-    public ResponseEntity<List<Customer>> getAllCustomers() {
-        List<Customer> customerList = customerService.getCustomers();
-        return new ResponseEntity<>(customerList, HttpStatus.OK);
+    public ResponseEntity<List<CustomerData>> getAllCustomers() {
+        List<CustomerData> customers = customerService.getCustomers();
+        return new ResponseEntity<>(customers, HttpStatus.OK);
     }
 }

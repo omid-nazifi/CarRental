@@ -13,6 +13,6 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CustomerServiceRequest implements Serializable {
     private CustomerServiceName name;
-    private Customer customer;
-    private Login loginData;
+    private CustomerData customer;
+    private LoginData loginData;
 }
