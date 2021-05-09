@@ -1,7 +1,7 @@
 package at.wiencampus.se.apigateway.configuration;
 
-import at.wiencampus.se.common.dto.CustomerServiceReply;
-import at.wiencampus.se.common.dto.CustomerServiceRequest;
+import at.wiencampus.se.common.dto.VehicleServiceReply;
+import at.wiencampus.se.common.dto.VehicleServiceRequest;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
@@ -23,21 +23,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-public class CustomerKafkaConfiguration {
+public class VehicleKafkaConfiguration {
 
     @Value("${kafka.broker1}")
     private String KAFKA_BROKER;
     @Value("${kafka.customer.groupid}")
     private String GROUP_ID;
-    @Value("${kafka.customer.topic.login.reply}")
-    public String REPLY_TOPIC_LOGIN;
-    @Value("${kafka.customer.topic.register.reply}")
-    public String REPLY_TOPIC_REGISTER;
-    @Value("${kafka.customer.topic.get_all.reply}")
-    public String REPLY_TOPIC_GET_ALL;
+    @Value("${kafka.vehicle.topic.book.reply}")
+    public String REPLY_TOPIC_BOOK;
+    @Value("${kafka.vehicle.topic.return.reply}")
+    public String REPLY_TOPIC_RETURN;
+    @Value("${kafka.vehicle.topic.all.reply}")
+    public String REPLY_TOPIC_ALL_VEHICLE;
+    @Value("${kafka.vehicle.topic.all_with_currency.reply}")
+    public String REPLY_TOPIC_ALL_VEHICLE_WITH_CURRENCY;
+    @Value("${kafka.vehicle.topic.all_customer_rentals.reply}")
+    public String REPLY_TOPIC_ALL_CUSTOMER_RENTALS;
+    @Value("${kafka.vehicle.topic.new.reply}")
+    public String REPLY_TOPIC_NEW_VEHICLE;
 
     @Bean
-    public Map<String, Object> customerConsumerConfigs() {
+    public Map<String, Object> vehicleConsumerConfigs() {
         Map<String, Object> props = new HashMap<>();
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_BROKER);
         props.put(ConsumerConfig.GROUP_ID_CONFIG, GROUP_ID);
@@ -48,7 +54,7 @@ public class CustomerKafkaConfiguration {
     }
 
     @Bean
-    public Map<String, Object> customerProducerConfigs() {
+    public Map<String, Object> vehicleProducerConfigs() {
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, KAFKA_BROKER);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
@@ -57,27 +63,27 @@ public class CustomerKafkaConfiguration {
     }
 
     @Bean
-    public ReplyingKafkaTemplate<String, CustomerServiceRequest, CustomerServiceReply> customerReplyKafkaTemplate(ProducerFactory<String,
-            CustomerServiceRequest> pf, KafkaMessageListenerContainer<String, CustomerServiceReply> lc) {
+    public ReplyingKafkaTemplate<String, VehicleServiceRequest, VehicleServiceReply> vehicleReplyKafkaTemplate(ProducerFactory<String,
+            VehicleServiceRequest> pf, KafkaMessageListenerContainer<String, VehicleServiceReply> lc) {
         return new ReplyingKafkaTemplate<>(pf, lc);
     }
 
     @Bean
-    public ProducerFactory<String, CustomerServiceRequest> customerRequestProducerFactory() {
-        return new DefaultKafkaProducerFactory<>(customerProducerConfigs(), new StringSerializer(), new JsonSerializer<CustomerServiceRequest>());
+    public ProducerFactory<String, VehicleServiceRequest> vehicleRequestProducerFactory() {
+        return new DefaultKafkaProducerFactory<>(vehicleProducerConfigs(), new StringSerializer(), new JsonSerializer<VehicleServiceRequest>());
     }
 
     @Bean
-    public ConsumerFactory<String, CustomerServiceReply> customerReplyConsumerFactory() {
-        JsonDeserializer<CustomerServiceReply> replyJsonDeserializer = new JsonDeserializer<>();
+    public ConsumerFactory<String, VehicleServiceReply> vehicleReplyConsumerFactory() {
+        JsonDeserializer<VehicleServiceReply> replyJsonDeserializer = new JsonDeserializer<>();
         replyJsonDeserializer.addTrustedPackages("*");
-        return new DefaultKafkaConsumerFactory(customerConsumerConfigs(), new StringDeserializer(), replyJsonDeserializer);
+        return new DefaultKafkaConsumerFactory(vehicleConsumerConfigs(), new StringDeserializer(), replyJsonDeserializer);
     }
 
     @Bean
-    public KafkaMessageListenerContainer<String, CustomerServiceReply> customerListenerContainer() {
-        ContainerProperties containerProperties = new ContainerProperties(REPLY_TOPIC_LOGIN, REPLY_TOPIC_REGISTER, REPLY_TOPIC_GET_ALL);
-        return new KafkaMessageListenerContainer<>(customerReplyConsumerFactory(), containerProperties);
+    public KafkaMessageListenerContainer<String, VehicleServiceReply> vehicleListenerContainer() {
+        ContainerProperties containerProperties = new ContainerProperties(REPLY_TOPIC_BOOK, REPLY_TOPIC_RETURN, REPLY_TOPIC_NEW_VEHICLE, REPLY_TOPIC_ALL_VEHICLE, REPLY_TOPIC_ALL_CUSTOMER_RENTALS, REPLY_TOPIC_ALL_VEHICLE_WITH_CURRENCY);
+        return new KafkaMessageListenerContainer<>(vehicleReplyConsumerFactory(), containerProperties);
     }
 
 }

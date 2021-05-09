@@ -1,5 +1,6 @@
 package at.wiencampus.se.vehicleservice.config;
 
+import at.wiencampus.se.vehicleservice.configuration.SoapClientConfig;
 import at.wiencampus.se.vehicleservice.gen.*;
 import at.wiencampus.se.vehicleservice.service.CurrencyService;
 import org.junit.Test;

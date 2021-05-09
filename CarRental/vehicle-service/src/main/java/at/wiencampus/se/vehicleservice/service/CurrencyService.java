@@ -1,6 +1,6 @@
 package at.wiencampus.se.vehicleservice.service;
 
-import at.wiencampus.se.carrental.config.TokenHeaderRequestCallback;
+import at.wiencampus.se.vehicleservice.configuration.TokenHeaderRequestCallback;
 import at.wiencampus.se.vehicleservice.gen.ConvertRequest;
 import at.wiencampus.se.vehicleservice.gen.ConvertResponse;
 import at.wiencampus.se.vehicleservice.gen.CurrencyEnum;

@@ -1,16 +1,16 @@
 package at.wiencampus.se.vehicleservice.model;
 
-import javax.persistence.*;
-import java.util.Date;
-import java.util.Set;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Entity(name = "vehicle")
+import java.util.Date;
+import java.util.UUID;
+
+@Document("vehicle")
 public class Vehicle {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(nullable = false,updatable = false)
-    private Long vehicleId;
+    private String vehicleId;
     private int cityId;
     private String vehicleName;
     private String manufacturer;
@@ -18,23 +18,21 @@ public class Vehicle {
     private int seats;
     private Date productionYear;
     private boolean isManual;
-    @Column(length = 128)
     private String plateNumber;
     private int insuranceNumber;
     private int horsePower;
     private float cost;
     private String conditionDescription;
-    @Column(length = 500)
     private String url;
-    @OneToMany(mappedBy = "vehicle")
-    Set<CustomerRental> reservations;
+
 
     public Vehicle() {
 
     }
 
-    public Vehicle(Long id, int cityId, String vehicleName, String manufacturer, String energyType, int seats, Date productionYear, boolean isManual, String plateNumber, int insuranceNumber, int horsePower, float cost, String conditionDescription, String url) {
-        this.vehicleId = id;
+    public Vehicle(int cityId, String vehicleName, String manufacturer, String energyType, int seats, Date productionYear, boolean isManual, String plateNumber, int insuranceNumber, int horsePower, float cost, String conditionDescription, String url) {
+        this.vehicleId = UUID.randomUUID().toString();
+        ;
         this.cityId = cityId;
         this.vehicleName = vehicleName;
         this.manufacturer = manufacturer;
@@ -50,11 +48,11 @@ public class Vehicle {
         this.url = url;
     }
 
-    public Long getVehicleId() {
+    public String getVehicleId() {
         return vehicleId;
     }
 
-    public void setVehicleId(Long id) {
+    public void setVehicleId(String id) {
         this.vehicleId = id;
     }
 
@@ -160,14 +158,6 @@ public class Vehicle {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public Set<CustomerRental> getReservations() {
-        return reservations;
-    }
-
-    public void setReservations(Set<CustomerRental> reservations) {
-        this.reservations = reservations;
     }
 
     @Override

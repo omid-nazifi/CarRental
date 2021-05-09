@@ -1,4 +1,4 @@
-package at.wiencampus.se.vehicleservice.config;
+package at.wiencampus.se.vehicleservice.configuration;
 
 import at.wiencampus.se.vehicleservice.service.CurrencyService;
 import org.springframework.beans.factory.annotation.Value;

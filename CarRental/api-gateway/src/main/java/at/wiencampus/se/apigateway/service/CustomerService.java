@@ -37,13 +37,13 @@ public class CustomerService {
         request.setName(CustomerServiceName.Register);
         request.setCustomer(customer);
 
-            //call MService
-            CustomerServiceReply reply = sendAndReceive(request, REQUEST_TOPIC_REGISTER, REPLY_TOPIC_REGISTER);
-            if (reply.getName() == CustomerServiceName.Register) {
-                return reply.getCustomerData();
-            } else {
-                throw new UnsupportedOperationException("Response Type is wrong! (" + reply.getName() + ")");
-            }
+        //call MService
+        CustomerServiceReply reply = sendAndReceive(request, REQUEST_TOPIC_REGISTER, REPLY_TOPIC_REGISTER);
+        if (reply.getName() == CustomerServiceName.Register) {
+            return reply.getCustomerData();
+        } else {
+            throw new UnsupportedOperationException("Response Type is wrong! (" + reply.getName() + ")");
+        }
     }
 
     public List<CustomerData> getCustomers() {

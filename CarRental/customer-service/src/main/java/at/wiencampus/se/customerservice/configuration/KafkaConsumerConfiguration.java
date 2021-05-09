@@ -123,7 +123,7 @@ public class KafkaConsumerConfiguration {
                 reply.setException(new Exception("Wrong request type: Request Type is not REGISTER!"));
             }
         } catch (Exception e) {
-            reply.setException(new Exception("Login service failed!", e));
+            reply.setException(new Exception("Register service failed!", e));
         }
         return reply;
     }
@@ -149,7 +149,7 @@ public class KafkaConsumerConfiguration {
                 reply.setException(new Exception("Wrong request type: Request Type is not GET_ALL!"));
             }
         } catch (Exception e) {
-            reply.setException(new Exception("Login service failed!", e));
+            reply.setException(new Exception("Get All Customer service failed!", e));
         }
         return reply;
     }

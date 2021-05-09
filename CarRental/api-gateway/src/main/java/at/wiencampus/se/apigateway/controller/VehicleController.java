@@ -45,7 +45,7 @@ public class VehicleController extends IController {
     }
 
     @PutMapping("/vehicleRent/return/{rentalId}")
-    public boolean returnRentalCar(@PathVariable("rentalId") long rentalId) {
+    public boolean returnRentalCar(@PathVariable("rentalId") String rentalId) {
         return vehicleService.returnRentalCar(rentalId);
     }
 

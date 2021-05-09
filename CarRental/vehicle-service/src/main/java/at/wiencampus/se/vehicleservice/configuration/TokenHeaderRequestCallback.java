@@ -1,4 +1,4 @@
-package at.wiencampus.se.carrental.config;
+package at.wiencampus.se.vehicleservice.configuration;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
