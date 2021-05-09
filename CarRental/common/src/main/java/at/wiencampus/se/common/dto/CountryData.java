@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Country implements Serializable {
+public class CountryData implements Serializable {
     private Long countryId;
     private String countryName;
 

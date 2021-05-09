@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Vehicle implements Serializable {
+public class VehicleData implements Serializable {
     private Long vehicleId;
     private int cityId;
     private String vehicleName;
@@ -28,7 +28,7 @@ public class Vehicle implements Serializable {
     private float cost;
     private String conditionDescription;
     private String url;
-    Set<CustomerRental> reservations;
+    Set<CustomerRentalData> reservations;
 
     @Override
     public String toString() {

@@ -13,11 +13,11 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CustomerRental implements Serializable {
+public class CustomerRentalData implements Serializable {
 
     private Long id;
-    private Customer customer;
-    private Vehicle vehicle;
+    private CustomerData customerData;
+    private VehicleData vehicleData;
     private Date reservationDate;
     private Date pickUpDate;
     private Date dropOffDate;
@@ -28,8 +28,8 @@ public class CustomerRental implements Serializable {
     public String toString() {
         return "CustomerRental{" +
                 "id=" + id +
-                ", customer=" + customer.getCustomerId() +
-                ", vehicle=" + vehicle.getVehicleId() +
+                ", customer=" + customerData.getCustomerId() +
+                ", vehicle=" + vehicleData.getVehicleId() +
                 ", reservationDate=" + reservationDate +
                 ", pickUpDate=" + pickUpDate +
                 ", dropOffDate=" + dropOffDate +

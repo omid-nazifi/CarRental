@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Login implements Serializable {
+public class LoginData implements Serializable {
     private String email;
     private String password;
 }

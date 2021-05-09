@@ -12,7 +12,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Customer implements Serializable {
+public class CustomerData implements Serializable {
     private Long customerId;
     private Long personalId;
     private int countryId;
@@ -23,7 +23,7 @@ public class Customer implements Serializable {
     private String number;
     private String password;
 
-    Set<CustomerRental> reservations;
+    Set<CustomerRentalData> reservations;
 
     @Override
     public String toString() {

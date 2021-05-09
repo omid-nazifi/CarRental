@@ -32,7 +32,7 @@ public class CustomerService {
     @Value("${kafka.customer.topic.get_all.reply}")
     public String REPLY_TOPIC_GET_ALL;
 
-    public Customer registerCustomer(Customer customer) {
+    public CustomerData registerCustomer(CustomerData customer) {
         CustomerServiceRequest request = new CustomerServiceRequest();
         request.setName(CustomerServiceName.Register);
         request.setCustomer(customer);
@@ -40,13 +40,13 @@ public class CustomerService {
             //call MService
             CustomerServiceReply reply = sendAndReceive(request, REQUEST_TOPIC_REGISTER, REPLY_TOPIC_REGISTER);
             if (reply.getName() == CustomerServiceName.Register) {
-                return reply.getCustomer();
+                return reply.getCustomerData();
             } else {
                 throw new UnsupportedOperationException("Response Type is wrong! (" + reply.getName() + ")");
             }
     }
 
-    public List<Customer> getCustomers() {
+    public List<CustomerData> getCustomers() {
         CustomerServiceRequest request = new CustomerServiceRequest();
         request.setName(CustomerServiceName.GetAll);
         request.setLoginData(null);
@@ -60,16 +60,16 @@ public class CustomerService {
         throw new UnsupportedOperationException("Response Type is wrong! (" + reply.getName() + ")");
     }
 
-    public Customer loginUser(String email, String password) {
-        Login loginData = new Login(email, password);
+    public CustomerData loginUser(String email, String password) {
+        LoginData login = new LoginData(email, password);
         CustomerServiceRequest request = new CustomerServiceRequest();
         request.setName(CustomerServiceName.Login);
-        request.setLoginData(loginData);
+        request.setLoginData(login);
 
         //call service
         CustomerServiceReply reply = sendAndReceive(request, REQUEST_TOPIC_LOGIN, REPLY_TOPIC_LOGIN);
         if (reply.getName() == CustomerServiceName.Login) {
-            return reply.getCustomer();
+            return reply.getCustomerData();
         }
         throw new UnsupportedOperationException("Response Type is wrong! (" + reply.getName() + ")");
     }

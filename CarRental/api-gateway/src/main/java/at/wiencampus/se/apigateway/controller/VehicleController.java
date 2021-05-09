@@ -2,8 +2,8 @@ package at.wiencampus.se.apigateway.controller;
 
 
 import at.wiencampus.se.apigateway.service.VehicleService;
-import at.wiencampus.se.common.dto.CustomerRental;
-import at.wiencampus.se.common.dto.Vehicle;
+import at.wiencampus.se.common.dto.CustomerRentalData;
+import at.wiencampus.se.common.dto.VehicleData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,23 +24,23 @@ public class VehicleController extends IController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Vehicle>> getAllVehicles() {
+    public ResponseEntity<List<VehicleData>> getAllVehicles() {
         return new ResponseEntity<>(vehicleService.getAllVehicles(), HttpStatus.OK);
     }
 
     @GetMapping("/rental")
-    public ResponseEntity<List<CustomerRental>> getAllVehicleRentalForCustomer(long customerId) {
+    public ResponseEntity<List<CustomerRentalData>> getAllVehicleRentalForCustomer(long customerId) {
         return new ResponseEntity<>(vehicleService.getAllCustomerRentalForCustomer(customerId), HttpStatus.OK);
     }
 
     @PutMapping("/vehicleRent")
-    public ResponseEntity<CustomerRental> rentAVehicle(@RequestBody CustomerRental customerRental) {
+    public ResponseEntity<CustomerRentalData> rentAVehicle(@RequestBody CustomerRentalData customerRental) {
         vehicleService.createVehicleRental(customerRental);
         return new ResponseEntity<>(customerRental, HttpStatus.OK);
     }
 
     @GetMapping("/all/{currency}")
-    public ResponseEntity<List<Vehicle>> getAllVehiclesWithCurrency(@PathVariable("currency") String currency) {
+    public ResponseEntity<List<VehicleData>> getAllVehiclesWithCurrency(@PathVariable("currency") String currency) {
         return new ResponseEntity<>(vehicleService.getAllVehicleForCurrency(currency), HttpStatus.OK);
     }
 
@@ -50,9 +50,9 @@ public class VehicleController extends IController {
     }
 
     @PostMapping("/addVehicle")
-    public ResponseEntity<Vehicle> returnRentalCar(@RequestBody Vehicle vehicle) {
-        Vehicle saved = vehicleService.createNew(vehicle);
-        return new ResponseEntity<Vehicle>(saved, HttpStatus.OK);
+    public ResponseEntity<VehicleData> returnRentalCar(@RequestBody VehicleData vehicle) {
+        VehicleData saved = vehicleService.createNew(vehicle);
+        return new ResponseEntity<VehicleData>(saved, HttpStatus.OK);
     }
 
 }

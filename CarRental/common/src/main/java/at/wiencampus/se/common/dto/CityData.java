@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class City implements Serializable {
+public class CityData implements Serializable {
 
     private Long cityId;
     private int countryId;
