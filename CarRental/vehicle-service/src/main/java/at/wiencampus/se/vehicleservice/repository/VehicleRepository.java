@@ -1,7 +1,9 @@
 package at.wiencampus.se.vehicleservice.repository;
 
-import at.wiencampus.se.common.dto.VehicleData;
-import org.springframework.data.jpa.repository.JpaRepository;
+import at.wiencampus.se.vehicleservice.model.Vehicle;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-public interface VehicleRepository extends JpaRepository<VehicleData,Long> {
+@EnableMongoRepositories
+public interface VehicleRepository extends MongoRepository<Vehicle, String> {
 }
