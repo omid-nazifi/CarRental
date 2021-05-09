@@ -75,22 +75,9 @@ public class CustomerKafkaConfiguration {
     }
 
     @Bean
-    public KafkaMessageListenerContainer<String, CustomerServiceReply> loginListenerContainer() {
-        ContainerProperties containerProperties = new ContainerProperties(REPLY_TOPIC_LOGIN);
+    public KafkaMessageListenerContainer<String, CustomerServiceReply> listenerContainer() {
+        ContainerProperties containerProperties = new ContainerProperties(REPLY_TOPIC_LOGIN, REPLY_TOPIC_REGISTER, REPLY_TOPIC_GET_ALL);
         return new KafkaMessageListenerContainer<>(replyConsumerFactory(), containerProperties);
     }
-
-    @Bean
-    public KafkaMessageListenerContainer<String, CustomerServiceReply> registerListenerContainer() {
-        ContainerProperties containerProperties = new ContainerProperties(REPLY_TOPIC_REGISTER);
-        return new KafkaMessageListenerContainer<>(replyConsumerFactory(), containerProperties);
-    }
-
-    @Bean
-    public KafkaMessageListenerContainer<String, CustomerServiceReply> getAllListenerContainer() {
-        ContainerProperties containerProperties = new ContainerProperties(REPLY_TOPIC_GET_ALL);
-        return new KafkaMessageListenerContainer<>(replyConsumerFactory(), containerProperties);
-    }
-
 
 }
