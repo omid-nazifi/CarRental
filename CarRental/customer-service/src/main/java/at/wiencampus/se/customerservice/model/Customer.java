@@ -1,30 +1,31 @@
 package at.wiencampus.se.customerservice.model;
 
+import javax.persistence.*;
 import java.util.Set;
 
-//@Table(name = "customer",uniqueConstraints = @UniqueConstraint(name = "customer_email_unique",columnNames = "email"))
-//@Entity(name = "customer")
+@Table(name = "customer", uniqueConstraints = @UniqueConstraint(name = "customer_email_unique", columnNames = "email"))
+@Entity(name = "customer")
 public class Customer {
 
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Column(nullable = false,updatable = false)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false, updatable = false)
     private Long customerId;
     private Long personalId;
     private int countryId;
-//    @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "first_name", nullable = false, columnDefinition = "TEXT")
     private String firstName;
-//    @Column(name = "last_name", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "last_name", nullable = false, columnDefinition = "TEXT")
     private String lastName;
-//    @Column(name = "address", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "address", nullable = false, columnDefinition = "TEXT")
     private String address;
-//    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false)
     private String email;
     private String number;
-//    @Column(name = "password", nullable = false, columnDefinition = "TEXT")
+    @Column(name = "password", nullable = false, columnDefinition = "TEXT")
     private String password;
 
-//    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer")
     Set<CustomerRental> reservations;
 
     public Customer() {
