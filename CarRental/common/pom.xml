@@ -12,8 +12,5 @@
     <artifactId>common</artifactId>
     <name>common</name>
 
-    <build>
-        <finalName>${project.groupId}-${project.artifactId}</finalName>
-    </build>
 
 </project>

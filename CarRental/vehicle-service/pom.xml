@@ -10,6 +10,7 @@
 
     <artifactId>vehicle-service</artifactId>
     <name>vehicle-service</name>
+    <packaging>jar</packaging>
 
     <properties>
         <maven-jaxb2-plugin.url>${env.CURRENCY_SVC_URL}</maven-jaxb2-plugin.url>
