@@ -16,6 +16,6 @@ public class VehicleServiceRequest implements Serializable {
     private CustomerRentalData customerRental;
     private String rentalId;
     private VehicleData vehicle;
-    private Long CustomerId;
+    private String CustomerId;
     private String currency;
 }

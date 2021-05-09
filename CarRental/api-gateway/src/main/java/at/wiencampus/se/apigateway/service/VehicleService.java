@@ -104,7 +104,7 @@ public class VehicleService {
         }
     }
 
-    public List<CustomerRentalData> getAllCustomerRentalForCustomer(long customerId) {
+    public List<CustomerRentalData> getAllCustomerRentalForCustomer(String customerId) {
         VehicleServiceRequest request = new VehicleServiceRequest();
         request.setName(VehicleServiceName.AllCustomerRentals);
         request.setCustomerId(customerId);
@@ -140,6 +140,9 @@ public class VehicleService {
 
             ConsumerRecord<String, VehicleServiceReply> consumerRecord = sendAndReceive.get();
             VehicleServiceReply reply = consumerRecord.value();
+            if(reply.getException() != null) {
+                throw new RuntimeException("Exception in the VehicleService!", reply.getException());
+            }
             return reply;
         } catch (Exception e) {
             throw new RuntimeException("sendAndReceive() Failed!", e);

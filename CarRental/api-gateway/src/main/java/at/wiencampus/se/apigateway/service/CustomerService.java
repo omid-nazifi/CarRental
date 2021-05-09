@@ -82,6 +82,9 @@ public class CustomerService {
 
             ConsumerRecord<String, CustomerServiceReply> consumerRecord = sendAndReceive.get();
             CustomerServiceReply reply = consumerRecord.value();
+            if(reply.getException() != null) {
+                throw new RuntimeException("Exception in the CustomerService!", reply.getException());
+            }
             return reply;
         } catch (Exception e) {
             throw new RuntimeException("sendAndReceive() Failed!", e);
