@@ -2,10 +2,11 @@ package at.wiencampus.se.carrental.repository;
 
 import at.wiencampus.se.carrental.dal.Customer;
 import at.wiencampus.se.carrental.dal.CustomerRental;
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 import java.util.List;
-
-public interface CustomerRentalRepository extends JpaRepository<CustomerRental,Long> {
+@EnableMongoRepositories
+public interface CustomerRentalRepository extends MongoRepository<CustomerRental, String> {
     List<CustomerRental> getCustomerRentalByCustomer(Customer customer);
 }
