@@ -8,11 +8,15 @@ import { Router } from '@angular/router';
 import { VehicleRentService } from '../../services/vehicle-rent.service'
 import { TokenStorageService } from '../../services/token-storage.service'
 
+const USER_KEY = 'auth-user';
 @Component({
   selector: 'app-car-offer',
   templateUrl: './car-offer.component.html',
   styleUrls: ['./car-offer.component.scss']
 })
+
+
+
 export class CarOfferComponent implements OnInit {
   range = new FormGroup({
     start: new FormControl(),
@@ -46,9 +50,18 @@ export class CarOfferComponent implements OnInit {
       console.log(err);
     })
   }
+  getUser(): any {
+    const user = window.sessionStorage.getItem(USER_KEY);
+    if (user) {
+      return JSON.parse(user);
+    }
+
+    return {};
+  }
+  
 
 
-  onSubmit(): void {
+  /*onSubmit(): void {
     const { customerID, vehicleID, reservationDate, pickUpDate, dropOffDate, isDamaged, totalCost } = this.form;
 
     this.vehicleRentService.vehicleRent(customerID, vehicleID, reservationDate, pickUpDate, dropOffDate, isDamaged, totalCost).subscribe(
@@ -62,7 +75,7 @@ export class CarOfferComponent implements OnInit {
         this.isSignUpFailed = true;
       }
     );
-  }
+  }*/
 
   
 }
