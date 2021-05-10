@@ -25,6 +25,9 @@
         <button class="btn btn-primary btn-block" (click)="login()">
           Login
         </button>
+        <button class="btn btn-primary btn-block" (click)="register()">
+          Register
+        </button>
       </div>
       <div class="form-group">
         <div class="alert alert-danger" role="alert" *ngIf="f.submitted && isLoginFailed">
@@ -34,7 +37,7 @@
     </form>
 
     <div class="alert alert-success" *ngIf="isLoggedIn">
-      Logged in as {{ roles }}.
+      Your login is successful!
     </div>
   </div>
 </div>

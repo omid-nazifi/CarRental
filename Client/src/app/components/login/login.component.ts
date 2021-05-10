@@ -59,5 +59,9 @@ export class LoginComponent implements OnInit {
     this.router.navigate(["/car-offer"]);
   }
 
+  register() {
+    this.router.navigate(["/register"]);
+  }
+
   
 }
