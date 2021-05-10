@@ -21,7 +21,7 @@ export class CustomerService {
         map((data: any[]) =>
           data.map(
             (item: any) =>
-              new Customer(item.customerID, item.personalId, item.firstName, item.lastName, item.address, item.email, item.number)
+              new Customer(item.customerID, item.personalId, item.countryId, item.firstName, item.lastName, item.address, item.email, item.number)
           )
         )
       );
