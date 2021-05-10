@@ -1,13 +1,16 @@
-We used Contract-First development style for implementing the exchange service because Spring-WS only supports the contract-first development style.
-Technologies: 
+### Definition:
+CurrencyConverter is a microservice which is used to calculate different currencies based on dollar. 
+It connects to [*European Central Bank*](http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml) and receives current rates.
+
+### Technologies:
  - Java 11
  - Spring Boot 2.4.4
- - SOAP and WSDL
+ - Springframework kafka
  - Maven 3.6.3
- - XJC tool
 
+### Getting Started
+:white_check_mark: Before run the microservice you have to run [Kafka container](../../Kafka/README.md)
 1. Checkout `https://github.com/omid-nazifi/CarRental.git`
 2. Open the Currency Converter (Java_SpringBoot) in the IntelliJ IDEA
-3. Run `mvn clean compile` to generate java classes from defined XML schema file (currency.xsd)
-4. Run app server (SoapServiceApplication) with the IntelliJ IDEA
-5. You can see WSDL on the address http://localhost:8080/ws/currency.wsdl 
+3. Run `mvn clean install` to build project
+4. Run app server (ConverterServiceApplication) with the IntelliJ IDEA
