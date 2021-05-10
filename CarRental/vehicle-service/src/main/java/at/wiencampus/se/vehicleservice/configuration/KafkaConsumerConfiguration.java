@@ -39,6 +39,8 @@ public class KafkaConsumerConfiguration {
     private VehicleRepository vehicleRepository;
     @Autowired
     private CustomerRentalRepository customerRentalRepository;
+    @Autowired
+    private CurrencyService currencyService;
 
     @Bean
     public Map<String, Object> consumerConfigs() {
@@ -142,6 +144,7 @@ public class KafkaConsumerConfiguration {
                 Mapper mapper = new DozerBeanMapper();
                 VehicleData newVehicle = request.getVehicle();
                 Vehicle vehicleEntity = mapper.map(newVehicle, Vehicle.class);
+                vehicleEntity.setVehicleId(null);
                 vehicleEntity = vehicleRepository.save(vehicleEntity);
                 VehicleData savedVehicle = mapper.map(vehicleEntity, VehicleData.class);
                 reply.setVehicle(savedVehicle);
@@ -189,9 +192,8 @@ public class KafkaConsumerConfiguration {
                 List<Vehicle> allVehicles = vehicleRepository.findAll();
                 List<VehicleData> vehicleData = new ArrayList<>(allVehicles.size());
 
-                CurrencyService converter = new CurrencyService();
                 for (Vehicle vehicle : allVehicles) {
-                    double convertedPrice = converter.getCurrency(vehicle.getCost(), CurrencyEnum.fromValue(request.getCurrency())).getPrice();
+                    double convertedPrice = currencyService.getCurrency(vehicle.getCost(), CurrencyEnum.fromValue(request.getCurrency())).getPrice();
                     vehicle.setCost((float) convertedPrice);
 
                     VehicleData dto = mapper.map(vehicle, VehicleData.class);

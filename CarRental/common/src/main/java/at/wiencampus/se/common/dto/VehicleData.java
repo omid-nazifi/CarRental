@@ -14,7 +14,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class VehicleData implements Serializable {
-    private Long vehicleId;
+    private String vehicleId;
     private int cityId;
     private String vehicleName;
     private String manufacturer;

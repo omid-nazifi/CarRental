@@ -13,7 +13,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CustomerData implements Serializable {
-    private Long customerId;
+    private String customerId;
     private Long personalId;
     private int countryId;
     private String firstName;

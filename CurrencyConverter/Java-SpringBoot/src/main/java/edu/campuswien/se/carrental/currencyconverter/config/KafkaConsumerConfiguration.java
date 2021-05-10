@@ -1,7 +1,7 @@
 package edu.campuswien.se.carrental.currencyconverter.config;
 
-import edu.campuswien.se.carrental.currencyconverter.dto.CurrencyConvertReply;
-import edu.campuswien.se.carrental.currencyconverter.dto.CurrencyConvertRequest;
+import at.wiencampus.se.common.dto.CurrencyConvertReply;
+import at.wiencampus.se.common.dto.CurrencyConvertRequest;
 import edu.campuswien.se.carrental.currencyconverter.logic.Converter;
 import edu.campuswien.se.carrental.currencyconverter.logic.ConverterImpl;
 import edu.campuswien.se.carrental.currencyconverter.logic.ConverterProxy;
@@ -9,8 +9,6 @@ import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.kafka.common.serialization.StringSerializer;
-import org.dozer.DozerBeanMapper;
-import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

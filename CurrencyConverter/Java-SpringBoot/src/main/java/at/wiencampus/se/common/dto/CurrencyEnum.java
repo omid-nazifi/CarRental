@@ -6,7 +6,7 @@
 //
 
 
-package edu.campuswien.se.carrental.currencyconverter.dto;
+package at.wiencampus.se.common.dto;
 
 public enum CurrencyEnum {
     EUR,

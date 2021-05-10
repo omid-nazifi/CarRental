@@ -16,9 +16,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @ContextConfiguration(classes = {TestContextConfiguration.class}, loader = AnnotationConfigContextLoader.class)
 public class CurrencyServiceTest {
 
+    @Autowired
+    CurrencyService currencyService;
+
     @Test
     public void getCurrencyTest() {
-        CurrencyService currencyService = new CurrencyService();
         CurrencyConvertReply response = currencyService.getCurrency(1, CurrencyEnum.EUR);
         assertNotNull(response);
     }

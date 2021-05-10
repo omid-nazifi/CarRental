@@ -12,10 +12,9 @@ import org.springframework.kafka.requestreply.ReplyingKafkaTemplate;
 import org.springframework.kafka.requestreply.RequestReplyFuture;
 import org.springframework.kafka.support.KafkaHeaders;
 import org.springframework.stereotype.Service;
-import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
 @Service
-public class CurrencyService extends WebServiceGatewaySupport {
+public class CurrencyService {
 
     private static final Logger logger = LoggerFactory.getLogger(CurrencyService.class);
 

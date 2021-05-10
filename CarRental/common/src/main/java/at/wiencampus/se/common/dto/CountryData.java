@@ -12,7 +12,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CountryData implements Serializable {
-    private Long countryId;
+    private String countryId;
     private String countryName;
 
     @Override

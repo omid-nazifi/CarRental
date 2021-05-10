@@ -13,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CityData implements Serializable {
 
-    private Long cityId;
+    private String cityId;
     private int countryId;
     private String cityName;
 

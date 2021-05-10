@@ -15,7 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class CustomerRentalData implements Serializable {
 
-    private Long id;
+    private String id;
     private CustomerData customerData;
     private VehicleData vehicleData;
     private Date reservationDate;

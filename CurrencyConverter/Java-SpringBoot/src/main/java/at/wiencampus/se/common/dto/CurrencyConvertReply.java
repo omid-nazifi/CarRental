@@ -6,7 +6,7 @@
 //
 
 
-package edu.campuswien.se.carrental.currencyconverter.dto;
+package at.wiencampus.se.common.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,7 +19,8 @@ import java.io.Serializable;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CurrencyConvertRequest implements Serializable {
-    private Double dollar;
+public class CurrencyConvertReply implements Serializable {
+    private Double price;
     private CurrencyEnum currency;
+    private Exception exception;
 }

@@ -29,7 +29,7 @@ public class CurrencyConverterKafkaConfiguration {
 
     @Value("${kafka.broker1}")
     private String KAFKA_BROKER;
-    @Value("${kafka.customer.groupid}")
+    @Value("${kafka.vehicle.groupid}")
     private String GROUP_ID;
     @Value("${kafka.topic.currency.convert.reply}")
     public String REPLY_TOPIC_CONVERT;
