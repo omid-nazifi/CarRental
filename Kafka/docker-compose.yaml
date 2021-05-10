@@ -1,0 +1,38 @@
+version: '3'
+services:
+  zookeeper:
+    ports:
+      - '2181:2181'
+    image: jplock/zookeeper
+    volumes:
+      - ./data/zookeeper/data:/data
+      - ./data/zookeeper/datalog:/datalog
+  kafka1:
+    ports:
+      - '9092:9092'
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://:19092,OUTSIDE://${DOCKER_HOST_IP:-127.0.0.1}:9092
+      KAFKA_LISTENERS: INSIDE://:19092,OUTSIDE://:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: '1'
+      KAFKA_CREATE_TOPICS: customer_login_request:1:1,customer_login_reply:1:1,customer_register_request:1:1,customer_register_reply:1:1,customer_all_request:1:1,customer_all_reply:1:1,vehicle_book_request:1:1,vehicle_book_reply:1:1,vehicle_return_request:1:1,vehicle_return_reply:1:1,vehicle_all_request:1:1,vehicle_all_reply:1:1,vehicle_all_with_currency_request:1:1,vehicle_all_with_currency_reply:1:1,vehicle_all_customer_rentals_request:1:1,vehicle_all_customer_rentals_reply:1:1,vehicle_new_request:1:1,vehicle_new_reply:1:1,currency_convert_request:1:1,currency_convert_reply:1:1
+      KAFKA_ADVERTISED_HOST_NAME: host.docker.internal
+    image: 'wurstmeister/kafka'
+    volumes:
+      - ./data/kafka1/run/docker.sock:/var/run/docker.sock
+      - ./data/kafka1/data:/var/lib/kafka/data
+  kafdrop:
+    image: obsidiandynamics/kafdrop
+    restart: "no"
+    ports:
+      - "9000:9000"
+    environment:
+      KAFKA_BROKERCONNECT: "kafka1:19092"
+    depends_on:
+      - kafka1
+volumes: {}

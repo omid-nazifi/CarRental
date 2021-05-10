@@ -1,6 +1,6 @@
 package edu.campuswien.se.carrental.currencyconverter.logic;
 
-import edu.campuswien.se.carrental.currencyconverter.CurrencyEnum;
+import at.wiencampus.se.common.dto.CurrencyEnum;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
