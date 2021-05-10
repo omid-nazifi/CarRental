@@ -1,64 +1,280 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BranchesTreeState">
-    <expand>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:feature" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-    </expand>
-    <select />
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf906009-2424-44c1-ba9f-7344918fb943" name="Default Changelist" comment="" />
+    <list default="true" id="8063e708-58a5-4c4e-84d1-a600c541dc0b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
   </component>
-  <component name="ProjectId" id="1sBC9CifhfS1TcOE7dmExLm8mUh" />
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/../.." value="feature/new_converter_with_java" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+    <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="1qwnGBauHBKGsisyTOT1S5M2CVj" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ExpandSpringBootJavaOptionsPanel" value="true" />
+    <property name="Git.Branch.Popup.ShowAllRemotes" value="true" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TF_FMT" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Client" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\HDD\Learning\FH Campus\Service Engineering\Project\CarRental\CurrencyConverter\Java-SpringBoot\src\main\java\edu\campuswien\se\carrental\currencyconverter\dto" />
+      <recent name="C:\HDD\Learning\FH Campus\Service Engineering\Project\CarRental\CurrencyConverter\Java-SpringBoot\src\test\resources" />
+      <recent name="C:\HDD\Learning\FH Campus\Service Engineering\Project\CarRental\CurrencyConverter\Java-SpringBoot\src\main\resources" />
+      <recent name="C:\HDD\Learning\FH Campus\Service Engineering\Project\CarRental\CurrencyConverter\Java-SpringBoot\src\test" />
+      <recent name="C:\HDD\Learning\FH Campus\Service Engineering\Project\gs-producing-web-service-master\complete\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\HDD\Learning\FH Campus\Service Engineering\Project\CarRental\CurrencyConverter\Java-SpringBoot\src\test\java" />
+      <recent name="C:\HDD\Learning\FH Campus\Service Engineering\Project\CarRental\CurrencyConverter\Java-SpringBoot" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="at.wiencampus.se.common.dto" />
+      <recent name="edu.campuswien.se.carrental.currencyconverter.logic" />
+      <recent name="edu.campuswien.se.carrental.currencyconverter.config" />
+      <recent name="edu.campuswien.se.carrental.currencyconverter.endpoint" />
+      <recent name="edu.campuswien.se.carrental.currencyconverter.service" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="edu.campuswien.se.carrental.currencyconverter.logic" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="edu.campuswien.se.carrental.currencyconverter.config" />
+      <recent name="com.example.producingwebservice" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ServiceApplication">
+    <configuration name="ConverterImplTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="producing-web-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.campuswien.se.carrental.currencyconverter.logic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.campuswien.se.carrental.currencyconverter.logic" />
+      <option name="MAIN_CLASS_NAME" value="edu.campuswien.se.carrental.currencyconverter.logic.ConverterImplTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ConverterProxyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="producing-web-service" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="edu.campuswien.se.carrental.currencyconverter.logic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="edu.campuswien.se.carrental.currencyconverter.logic" />
+      <option name="MAIN_CLASS_NAME" value="edu.campuswien.se.carrental.currencyconverter.logic.ConverterProxyTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="currency_converter [clean,install]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings">
+          <MavenRunnerSettings>
+            <option name="delegateBuildToMaven" value="false" />
+            <option name="environmentProperties">
+              <map />
+            </option>
+            <option name="jreName" value="#USE_PROJECT_JDK" />
+            <option name="mavenProperties">
+              <map />
+            </option>
+            <option name="passParentEnv" value="true" />
+            <option name="runMavenInBackground" value="true" />
+            <option name="skipTests" value="true" />
+            <option name="vmOptions" value="" />
+          </MavenRunnerSettings>
+        </option>
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="install" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
+    <configuration name="ServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="producing-web-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="edu.campuswien.se.carrental.currencyconverter.ConverterServiceApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.ConverterImplTest" />
+      <item itemvalue="JUnit.ConverterProxyTest" />
+      <item itemvalue="Maven.currency_converter [clean,install]" />
+      <item itemvalue="Spring Boot.ServiceApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ConverterProxyTest" />
+        <item itemvalue="JUnit.ConverterImplTest" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bf906009-2424-44c1-ba9f-7344918fb943" name="Default Changelist" comment="" />
-      <created>1620336441489</created>
+      <changelist id="8063e708-58a5-4c4e-84d1-a600c541dc0b" name="Default Changelist" comment="" />
+      <created>1617999423497</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1620336441489</updated>
+      <updated>1617999423497</updated>
+      <workItem from="1617999424766" duration="22465000" />
+      <workItem from="1618068166907" duration="22091000" />
+      <workItem from="1618167681141" duration="12824000" />
+      <workItem from="1618507091153" duration="213000" />
+      <workItem from="1620412648846" duration="15000" />
+      <workItem from="1620562136525" duration="1297000" />
+      <workItem from="1620572686155" duration="412000" />
+      <workItem from="1620574174095" duration="669000" />
+      <workItem from="1620575888899" duration="8775000" />
+      <workItem from="1620601655012" duration="2802000" />
+      <workItem from="1620660996014" duration="1293000" />
+      <workItem from="1620664649348" duration="3389000" />
     </task>
+    <task id="LOCAL-00001" summary="move python service in sub folder">
+      <created>1618068833113</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1618068833113</updated>
+    </task>
+    <task id="LOCAL-00002" summary="create soap service with java spring boot">
+      <created>1618069030863</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1618069030863</updated>
+    </task>
+    <task id="LOCAL-00003" summary="rename and move files in packages">
+      <created>1618094656837</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1618094656837</updated>
+    </task>
+    <task id="LOCAL-00004" summary="remove unused">
+      <created>1618094706141</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1618094706141</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add enum in xsd">
+      <created>1618094725383</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1618094725383</updated>
+    </task>
+    <task id="LOCAL-00006" summary="converter and a proxy for it">
+      <created>1618094790533</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1618094790533</updated>
+    </task>
+    <task id="LOCAL-00007" summary="unittests for converter">
+      <created>1618094819095</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1618094819095</updated>
+    </task>
+    <task id="LOCAL-00008" summary="add flask enterprise in requirements.txt">
+      <created>1618094841151</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1618094841151</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -69,6 +285,39 @@
           </value>
         </entry>
       </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="move python service in sub folder" />
+    <MESSAGE value="create soap service with java spring boot" />
+    <MESSAGE value="rename and move files in packages" />
+    <MESSAGE value="remove unused" />
+    <MESSAGE value="add enum in xsd" />
+    <MESSAGE value="converter and a proxy for it" />
+    <MESSAGE value="unittests for converter" />
+    <MESSAGE value="add flask enterprise in requirements.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="add flask enterprise in requirements.txt" />
+  </component>
+  <component name="com.vaadin.designer2.intellij.settings.SizePresetsSettingsComponent">
+    <option name="sizePresets">
+      <list>
+        <SizePreset>
+          <option name="caption" value="Phone" />
+          <option name="height" value="568" />
+          <option name="width" value="320" />
+        </SizePreset>
+        <SizePreset>
+          <option name="caption" value="Tablet" />
+          <option name="height" value="1024" />
+          <option name="width" value="768" />
+        </SizePreset>
+        <SizePreset>
+          <option name="caption" value="Desktop" />
+          <option name="height" value="900" />
+          <option name="width" value="1440" />
+        </SizePreset>
+      </list>
     </option>
   </component>
 </project>
