@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Vehicle } from '../../models/Vehicle';
 import { VehiclesService } from 'src/app/services/vehicles.service';
 
@@ -21,6 +21,7 @@ export class RentCarComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    //https://stackoverflow.com/questions/35688084/how-to-get-query-params-from-url-in-angular-2
   }
 
 }

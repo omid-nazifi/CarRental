@@ -9,7 +9,7 @@ import { Vehicle } from '../models/Vehicle';
   providedIn: 'root'
 })
 export class VehiclesService {
-  private baseUrl = "http://localhost:7000/vehicle/all";
+  private baseUrl = "http://localhost:7000/api/vehicle/all";
 
   constructor(private http: HttpClient) { }
 
